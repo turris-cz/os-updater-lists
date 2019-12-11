@@ -1,0 +1,124 @@
+Turris OS Updater's lists
+=========================
+
+These are Lua scripts for updater-ng. They are server side configuration for
+Turris OS updating process. Updater downloads these scripts and runs them to get
+rules for update it does.
+
+Lists are either Lua files with `.lua` extension or m4 macro files generating Lua
+script with `.lua.m4` extension. Script `generate_lists` just copies plain Lua
+files and runs m4 for `*.lua.m4` files. Any other file is ignored.
+
+This repository is used by
+https://gitlab.labs.nic.cz/turris/turris-build[turris-build].
+
+Workflow of this repository is consistent with workflow of
+https://gitlab.labs.nic.cz/turris/turris-os-packages[turris-os-packages].
+
+
+List categories
+---------------
+
+There are different lists used for different use cases. This section serves and
+general overview of available lists.
+
+Top level list
+~~~~~~~~~~~~~~
+
+Top level lists are accessed by default and define default installation targets.
+The general use case for them is default installation and rules that are always
+included.
+
+There are files with _base_ prefix, those are used as top level files. Additional
+groups of rules (such as for Foris or Luci) are in separate lists and accessed
+from _base_ one.
+
+Package lists
+~~~~~~~~~~~~~
+
+These are lists of packages optionally included in installation. This inclusion is
+controlled by end device and package __pkglists__.
+
+Contracts
+~~~~~~~~~
+
+These are lits maintained for routers with contract. Such router is configured to
+always ask for its specific contract file.
+
+
+m4 macros
+---------
+
+As lists can be generated using m4 macro language there are also some commonly
+used macros defined in various files. You can understand them as m4 libraries. In
+reality m4 is instructed to look for files in this directory. You can for example
+use `include(utils.m4)dnl` to include `utils.m4` file in this directory.
+
+Next subsections describe various macros defined in various files
+
+utils.m4
+~~~~~~~~
+
+This file is expected to be included to pretty much every file that is not pure
+Lua. It contains core definitions you probably want to use.
+
+`file2args(FILE)`:: Transforms lines in file to comma separated list of arguments. You
+  have to provide path to file. Usage: `file2args(`kmod.common')`
+
+`foreach(X,TEXT(X),...)`:: Evaluates second argument with first argument as macro
+  definition with macro of value of all additional arguments. Usage:
+  `foreach(X,`kmod-X',foo,fee)`
+
+`foeach_join(X,TEXT(X),Y,...)`:: This serves same purpose as
+  `foreach(X,TEXT(X),...)`. The difference is that there is one additional
+  argument `Y` that is used to join generated text. Usage:
+  `foreach(X,`kmod-X',`\,',foo,fee)`
+
+`forInstall(BASE,...)`:: Generate Install requests for common base and various expansions.
+  The use case is to simplify writing of some requests where base of package name
+  repeats. Usage: `forInstall(`kmod-',`foo',`fee')`
+
+`forInstallCritical(BASE,...)`:: This same as `forInstall(BASE,...)` but it makes
+  critical packages requests instead of regular ones.
+
+`_FEATURE_GUARD_`:: Use this to guard more complicated sections of scripts. They
+  are intended as a way to just have guard for all new features but still have
+  valid scripts that allow system to update updater to new version and that way
+  process guarded sections as well.
+
+`_END_FEATURE_GUARD_`:: End of `_FEATURE_GUARD_`. Always pair these together.
+
+This file also includes one pure Lua function `list_script`. It is intended for
+generic relative list inclusion. The reason for its existence is that updater
+might not support relative URIs and in such case it just uses HBS to build URI.
+
+This also includes check for updater version. Only updater newer than version
+60.0.0 is allowed.
+
+The last thing it provides is exact identifier for board. That is stored in
+variable `board` and can have one of three values:
+* `mox`
+* `omnia`
+* `turris1x`
+
+luci-utils.m4
+~~~~~~~~~~~~~
+
+This provides you with pure Lua functions to add Luci packages in consistent way.
+
+`luci_app(...)`:: This adds Install request for Luci application packages. It
+  automatically also handles localization packages. Usage:
+  `luci_app("app1", "app2")`
+
+`luci_proto(...)`:: This adds Install request for Luci protocol packages. This is
+  just to provide consistency with `luci_app`. It does not provide anything more
+  than Install request. Usage: `luci_proto("proto1", "proto2")`
+
+foris-utils.m4
+~~~~~~~~~~~~~~
+
+This provides pure Lua function to include Foris plugin in consistent way.
+
+`foris_plugin(...)`:: This adds Install request for provided Foris plugins. It
+  automatically handles localizations for given plugin. Usage:
+  `foris_plugin("plugin1", "plugin2")`

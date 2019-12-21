@@ -53,7 +53,7 @@ _FEATURE_GUARD_
 
 -- Network tools
 Install("ip-full", "tc", "genl", "ip-bridge", "ss", "nstat", "devlink", "rdma", { priority = 40 })
-Install("iputils-ping", "iputils-ping6", "iputils-tracepath", "iputils-tracepath6", "iputils-traceroute6", { priority = 40 })
+Install("iputils-ping", "iputils-tracepath", { priority = 40 })
 Install("iptables", "ip6tables", "conntrack", { priority = 40 })
 Install("bind-client", "bind-dig", { priority = 40 })
 Install("umdns", { priority = 40 })

@@ -6,8 +6,8 @@ Turris OS updating process. Updater downloads these scripts and runs them to get
 rules for update it does.
 
 Lists are either Lua files with `.lua` extension or m4 macro files generating Lua
-script with `.lua.m4` extension. Script `generate_lists` just copies plain Lua
-files and runs m4 for `*.lua.m4` files. Any other file is ignored.
+script with `.lua.m4` extension. Script `generate.sh` just copies plain Lua files
+and runs m4 for `*.lua.m4` files. Any other file is ignored.
 
 This repository is used by
 https://gitlab.labs.nic.cz/turris/turris-build[turris-build].

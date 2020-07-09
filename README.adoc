@@ -93,32 +93,10 @@ generic relative list inclusion. The reason for its existence is that updater
 might not support relative URIs and in such case it just uses HBS to build URI.
 
 This also includes check for updater version. Only updater newer than version
-60.0.0 is allowed.
+60.0.1 is allowed.
 
 The last thing it provides is exact identifier for board. That is stored in
 variable `board` and can have one of three values:
 * `mox`
 * `omnia`
 * `turris1x`
-
-luci-utils.m4
-~~~~~~~~~~~~~
-
-This provides you with pure Lua functions to add Luci packages in consistent way.
-
-`luci_app(...)`:: This adds Install request for Luci application packages. It
-  automatically also handles localization packages. Usage:
-  `luci_app("app1", "app2")`
-
-`luci_proto(...)`:: This adds Install request for Luci protocol packages. This is
-  just to provide consistency with `luci_app`. It does not provide anything more
-  than Install request. Usage: `luci_proto("proto1", "proto2")`
-
-foris-utils.m4
-~~~~~~~~~~~~~~
-
-This provides pure Lua function to include Foris plugin in consistent way.
-
-`foris_plugin(...)`:: This adds Install request for provided Foris plugins. It
-  automatically handles localizations for given plugin. Usage:
-  `foris_plugin("plugin1", "plugin2")`

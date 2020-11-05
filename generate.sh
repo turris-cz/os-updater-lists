@@ -25,8 +25,7 @@ help() {
 	cat >&2 <<EOF
 Turris OS lists for updater-ng generator script.
 
-You should can output directory as only argument. './lists' is used if not
-specified.
+DIR is optional output directory, in default './lists' is used.
 
 Options:
   -f FEEDS   Path to feeds.conf file for target build (in default ./feeds.conf is
@@ -73,7 +72,7 @@ case "$#" in
 		;;
 esac
 
-[ -f "$feeds_conf" ] || {
+[ -r "$feeds_conf" ] || {
 	echo "No such feed file located: $feeds_conf" >&2
 	usage
 	exit 1

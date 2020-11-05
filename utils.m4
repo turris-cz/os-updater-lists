@@ -23,7 +23,7 @@ define(`forInstallCritical',`Install(foreach_join(PKGPART,`"$1-PKGPART"',`, ',sh
 # Feature guard
 # Some packages might not be installable without some features. Skipping every
 # additional packages ensures that at least updater is updated.
-define(`_FEATURE_GUARD_', `if true then -- Advanced dependencies guard')
+define(`_FEATURE_GUARD_', `if features.request_condition then -- Advanced dependencies guard')
 define(`_END_FEATURE_GUARD_', `end')
 # This is empty for now because minimal version check is enought for now but is left there for future reuse.
 
@@ -52,6 +52,13 @@ function list_script(list)
 		Script(list)
 	else
 		Script((repo_base_uri or "https://repo.turris.cz/hbs") .. "/" .. board .. "/lists/" .. list)
+	end
+end
+
+-- Our own version of for_l10n to override priority
+function for_l10n(fragment)
+	for _, lang in pairs(l10n or {}) do
+		Install(fragment .. lang, {optional = true, priority = 10})
 	end
 end
 ----------------------------------------------------------------------------------

@@ -21,7 +21,7 @@ options = {
 	["dynfw"] = true,
 	["haas"] = true,
 	["survey"] = true,
-	["nikola"] = true,
+	["fwlogs"] = true,
 	["minipot"] = true,
 }
 Export("options")

@@ -9,8 +9,8 @@ if not options or options.dynfw ~= false then
 	Install("sentinel-dynfw-client", { priority = 40 })
 end
 
-if not options or options.nikola ~= false then
-	Install("sentinel-nikola", { priority = 40 })
+if not options or options.fwlogs ~= false then
+	Install("sentinel-fwlogs", { priority = 40 })
 end
 
 if not options or options.minipot ~= false then

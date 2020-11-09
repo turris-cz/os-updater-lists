@@ -176,3 +176,18 @@ if not version_match or not installed or
 	Install("fix-nextcloud-conf")
 	Package("fix-nextcloud-conf", { replan = "finished" })
 end
+
+-- Sentinel nikola is obsoleted by fwlogs. This fix replaces migrates its
+-- configuration to fwlogs.
+-- Note: there is no condition on sentinel-fwlogs being actually installed. We are
+-- interested only in nikola and we should always migrate that to cover later
+-- fwlogs installation.
+if installed and installed["sentinel-nikola"] then
+	Install("fix-sentinel-nikola-to-fwlogs")
+	Package("fix-sentinel-nikola-to-fwlogs", { replan = "finished" })
+end
+-- And this changes option name from nikola to fwlogs
+if installed and installed["pkglists"] and version_match(installed["pkglists"].version, "<1.7.0") then
+	Install("fix-pkglists-nikola-to-fwlogs")
+	Package("fix-pkglists-nikola-to-fwlogs", { replan = "finished" })
+end

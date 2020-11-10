@@ -20,7 +20,7 @@ elseif board == "omnia" then
 	forInstallCritical(kmod,file2args(kmod-omnia.list))
 	Install("omnia-support", { critical = true })
 elseif board == "turris1x" then
-	forInstallCritical(kmod,file2args(kmod-turris.list))
+	forInstallCritical(kmod,file2args(kmod-turris1x.list))
 	Install("turris1x-support", { critical = true })
 end
 Install("fstools", { critical = true })

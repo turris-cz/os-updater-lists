@@ -7,7 +7,7 @@ local foris_plugins = {
 	["openvpn"] = "openvpn",
 	["pakon"] = "pakon",
 	["storage"] = false,
-	["subordinates"] = turris-netboot-tools,
+	["subordinates"] = "turris-netboot-tools",
 }
 
 local reforis_plugins = {
@@ -32,7 +32,7 @@ for plugin, condition in pairs(foris_plugins) do
 	if condition ~= false then
 		Install(fplugin, { priority = 40, condition = condition })
 	end
-	if for_l10n then
+	for _, lang in pairs(l10n or {}) do
 		Install(fplugin .. "-l10n-" .. lang, {
 			priority = 10,
 			optional = true,
@@ -46,7 +46,7 @@ for plugin, condition in pairs(reforis_plugins) do
 	if condition ~= false then
 		Install(refplugin, { priority = 40, condition = condition or nil })
 	end
-	if for_l10n then
+	for _, lang in pairs(l10n or {}) do
 		Install(refplugin .. "-l10n-" .. lang, {
 			priority = 10,
 			optional = true,

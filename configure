@@ -19,15 +19,15 @@ print_help() {
 Configuration script for Turris Updater Lists.
 
 Options:
-  -f, --feeds PATH
+  -f PATH
     This is required argument. It specifies path to feeds.conf file. This
     file is used to generate appropriate repository index.
-  -v, --tos-version VERSION
+  -v VERSION
     This allows you to set Turris OS version printed on repository list
     inclusion. In default 'unknown' is used.
-  -d, --destdir PATH
+  -d PATH
     Optional output destination. In default './output' is used.
-  -h, --help
+  -h
     Prints this help text and terminates execution.
 EOF
 }
@@ -37,45 +37,30 @@ feeds=""
 tos_version="unknown"
 destdir="$PWD/output"
 
-declare -A long2short=( ["help"]="h" ["feeds"]="f" ["tos-version"]="v" ["destdir"]="d")
-while [ "$OPTIND" -le "$#" ]; do
-	argument="${!OPTIND}"
-	if getopts ":hf:v:d:" opt; then
-		if [ "${argument:0:2}" = "--" ]; then
-			longopt="${argument:2}"
-			if [ -v long2short["$longopt"] ]; then
-				opt="${long2short[$longopt]}"
-			else
-				OPTARG="$argument"
-			fi
-		fi
-		case "$opt" in
-			h)
-				print_help
-				exit 0
-				;;
-			f)
-				[ -r "$OPTARG" ] \
-					|| usage_fail "Feeds has to be valid path to feeds.conf file."
-				feeds="$(readlink -f "$OPTARG")"
-				;;
-			v)
-				tos_version=""$OPTARG""
-				;;
-			d)
-				destdir="$(readlink -f "$OPTARG")"
-				;;
-			\?)
-				echo "Illegal option: $OPTARG"
-				exit 1
-				;;
-		esac
-		continue
-	else
-		usage_fail "Unexpected argument:" "$argument"
-	fi
-	((OPTIND = OPTIND + 1))
+while getopts ":hf:v:d:" OPT; do
+	case "$OPT" in
+		h)
+			print_help
+			exit 0
+			;;
+		f)
+			[ -r "$OPTARG" ] \
+				|| usage_fail "Feeds has to be valid path to feeds.conf file: $OPTARG"
+			feeds="$(readlink -f "$OPTARG")"
+			;;
+		v)
+			tos_version=""$OPTARG""
+			;;
+		d)
+			destdir="$(readlink -f "$OPTARG")"
+			;;
+		\?)
+			usage_fail "Illegal option: $OPTARG"
+			;;
+	esac
 done
+shift $((OPTIND-1))
+[ "$#" -eq 0 ] || usage_fail "Unexpected argument:" "$1"
 
 [ -n "$feeds" ] \
 	|| usage_fail "--feeds argument has to be specified to set valid path to feeds.conf."

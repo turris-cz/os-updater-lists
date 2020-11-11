@@ -1,0 +1,24 @@
+image: registry.labs.nic.cz/turris/turris-updater-lists
+
+stages:
+  - build
+  - lint
+
+.configure:
+  before_script:
+    - ./configure -f /feeds.conf
+
+
+## Build stage ###################################################################
+build:
+  stage: build
+  extends: .configure
+  script:
+    - make
+
+## Lint stage ####################################################################
+lint:
+  stage: lint
+  extends: .configure
+  script:
+    - make lint

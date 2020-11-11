@@ -64,3 +64,6 @@ $(DESTDIR)/%.lua: %.lua
 
 $(O)/.config.mk:
 	$(error Please run configure script first)
+
+
+include tests/tests.mk

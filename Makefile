@@ -17,6 +17,8 @@ LUACHECK ?= luacheck
 # Include LISTS
 include lists.mk
 LISTS_LUA := $(patsubst %,$(DESTDIR)/%.lua,$(LISTS))
+PKGLISTS_LUA := $(filter %/pkglists/%.lua,$(LISTS_LUA))
+CONTRACTS_LUA := $(filter %/contracts/%.lua,$(LISTS_LUA))
 
 .PHONY: all
 all: $(LISTS_LUA)

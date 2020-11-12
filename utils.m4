@@ -50,6 +50,13 @@ if not board then
 	end
 end
 
+local supported_boards = {
+	["mox"] = true, ["omnia"] = true, ["turris1x"] = true
+}
+if not supported_boards[board] then
+	DIE("Unsupported board: " .. tostring(board))
+end
+
 -- Script simplifying lists inclusion when older version of updater is used
 function list_script(list)
 	if features["relative_uri"] then

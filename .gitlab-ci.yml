@@ -2,7 +2,7 @@ image: registry.labs.nic.cz/turris/turris-updater-lists
 
 stages:
   - build
-  - lint
+  - check
 
 .configure:
   before_script:
@@ -16,9 +16,15 @@ build:
   script:
     - make
 
-## Lint stage ####################################################################
+## Check stage ###################################################################
 lint:
-  stage: lint
+  stage: check
   extends: .configure
   script:
     - make lint
+
+test:
+  stage: check
+  extends: .configure
+  script:
+    - make -k test

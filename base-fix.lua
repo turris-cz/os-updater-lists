@@ -56,6 +56,14 @@ if not version_match or not installed or
 	Package("fix-dns-forward-quad9-split", { replan = "finished" })
 end
 
+-- Migrate ends buffer size value in resolver config.
+-- It was changed because of DNS flag day 2020.
+if not version_match or not installed or
+		(installed["resolver-conf"] and version_match(installed["resolver-conf"].version, "<0.0.2-8")) then
+	Install("fix-edns-buffer-size")
+	Package("fix-edns-buffer-size", { replan = "finished" })
+end
+
 -- Migrate original pkglists to separate config with options in place
 if not version_match or not installed or
 		(installed["pkglists"] and version_match(installed["pkglists"].version, "<1.3")) then
@@ -114,4 +122,17 @@ end
 if version_match and installed and installed["cznic-cacert-bundle"] then
 	Install("fix-cleanup-cert-backup")
 	Package("fix-cleanup-cert-backup", { replan = "finished" })
+end
+
+-- With Turris OS 5.2.0 packages luci-lighttpd and turris-webapps integration
+-- included in luci-base was merged to single dedicated package
+-- turris-webapps-luci. Problem is that luci-base was handled by patch that did
+-- caused no version change so we can end up potentially with conflict between
+-- previous luci-base and new turris-webapps-luci. This simply requests reinstall
+-- when luci-lighttpd is installed. It is not the cause but it should be removed
+-- at the same time as this error is being resolved.
+if installed and installed["luci-lighttpd"] and not installed["turris-webapps-luci"] then
+	-- Note: condition here makes this request prety much ignored and so we won't
+	-- interfere with install priorities.
+	Install("luci-base", { reinstall = true, condition = "luci-base" })
 end

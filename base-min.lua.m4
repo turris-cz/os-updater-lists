@@ -20,7 +20,7 @@ elseif board == "omnia" then
 	forInstallCritical(kmod,file2args(kmod-omnia.list))
 	Install("omnia-support", { critical = true })
 elseif board == "turris1x" then
-	forInstallCritical(kmod,file2args(kmod-turris1x.list))
+	forInstallCritical(kmod,file2args(kmod-turris.list))
 	Install("turris1x-support", { critical = true })
 end
 Install("fstools", { critical = true })
@@ -55,9 +55,11 @@ Install("ppp", "ppp-mod-pppoe", { priority = 40 })
 _FEATURE_GUARD_
 
 -- Updater utility
+Install("updater-drivers", { priority = 40 })
 Install("updater-opkg-wrapper", { priority = 40 })
 Install('switch-branch', { priority = 40 })
 
+Package('updater-drivers', { replan = 'finished' })
 Package('l10n-supported', { replan = 'finished' })
 Package('updater-opkg-wrapper', { replan = 'finished' })
 Package('localrepo', { replan = 'finished' })

@@ -136,3 +136,32 @@ if installed and installed["luci-lighttpd"] and not installed["turris-webapps-lu
 	-- interfere with install priorities.
 	Install("luci-base", { reinstall = true, condition = "luci-base" })
 end
+
+-- With uboot-tools version 2018.03-4 environment configuration was fixed. Problem
+-- is that it is not applied in default as script checks for existence of
+-- /etc/config/ubootenv file and does nothing.
+-- In case of Mox we also move fw_env.config from mox-support package. Because of
+-- that we have to update mox-support first so we would not remove generated file.
+if not version_match or not installed or
+		(installed["uboot-tools"] and version_match(installed["uboot-tools"].version, "<2018.03-4")) then
+	Package("uboot-tools", { deps = "fix-uboot-env-reset" })
+	if board ~= "mox" then
+		Package("uboot-tools", { deps = "mox-support" })
+	end
+end
+
+-- Package dhparam was removed and replaced by turris-cagen ability to generate
+-- dhparam instead. These files are expected to be in different locations so we
+-- have to fix paths in existing server configurations. This does exactly that.
+if installed and installed["dhparam"] then
+	Install("fix-dhparam-to-cagen")
+	Package("fix-dhparam-to-cagen", { replan = "finished" })
+end
+
+-- pkglists package 1.6.0 moved content of hardening package list to separate
+-- options. This fix just enables those option, that are not in default enabled,
+-- to users with hardening enabled.
+if not version_match or not installed or
+		(installed["pkglists"] and version_match(installed["pkglists"].version, "<1.6.0")) then
+	Install("fix-pkglists-hardening-options")
+end

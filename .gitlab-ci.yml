@@ -1,4 +1,4 @@
-image: registry.labs.nic.cz/turris/turris-updater-lists
+image: registry.labs.nic.cz/turris/os/updater-lists
 
 stages:
   - build

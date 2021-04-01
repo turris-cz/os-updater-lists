@@ -37,7 +37,7 @@ local db = {
 	{ -- Computer & Entertainment, Inc. Astrometa DVB-T/T2/C FM & DAB receiver [RTL2832P]
 		vendor = 0x15f4,
 		product = 0x0131,
-		packages = {"kmod-dvb-cxd2841er", "kmod-dvb-usb-rtl28xxu", "kmod-media-tuner-r820t"},
+		packages = {"kmod-dvb-usb", "kmod-dvb-cxd2841er", "kmod-dvb-mn88473", "kmod-dvb-rtl2832", "kmod-dvb-usb-rtl28xxu", "kmod-media-tuner-r820t", "kmod-media-tuner-r820t"},
 		class = {"dvb"}
 	},
 	{ -- Microsoft Corporation Xbox One Digital TV Tuner
@@ -51,7 +51,7 @@ local db = {
 	{ -- Qualcomm, Inc. Acer Gobi 2000 Wireless Modem
 		vendor = 0x05c6,
 		product = 0x9215,
-		packages = {"usb-net-qmi-wwan", "usb-serial-qualcomm"},
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-qualcomm"},
 		class = {"broadband"}
 	},
 	{ -- Huawei Technologies Co., Ltd. K5150 LTE modem
@@ -90,6 +90,12 @@ local db = {
 		vendor = 0x0403,
 		product = 0x6015,
 		packages = {"kmod-usb-acm"},
+		class = {"serial"}
+	},
+	{ -- Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+		vendor = 0x0403,
+		product = 0x6001,
+		packages = {"kmod-usb-serial-ftdi"},
 		class = {"serial"}
 	},
 	{ -- Sigma Designs, Inc. Aeotec Z-Stick Gen5 (ZW090) - UZB

@@ -3,6 +3,7 @@ Root script for updater-ng configuration used for bootstrapping new root.
 
 This script expects following variables to be possibly defined in environment:
   BOOTSTRAP_BOARD: board name (Mox|Omnia|Turris)
+  BOOTSTRAP_BASE: optional specification of base script. 'base' is used in default.
   BOOTSTRAP_L10N: commas separated list of languages to be installed in root.
   BOOTSTRAP_PKGLISTS: commas separated list of package lists to be included in
     root. To specify options you can optionally add parentheses at the end of
@@ -22,6 +23,15 @@ if root_dir == "/" then
 	DIE("Bootstrap is not allowed on root.")
 end
 
+
+-- Get target board
+model = os.getenv('BOOTSTRAP_BOARD')
+if not model or model == "" then
+	DIE("Target model has to be provided by BOOTSTRAP_BOARD environment variable.")
+end
+Export('model')
+
+
 -- Load requested localizations
 l10n = {}
 local env_l10n = os.getenv('BOOTSTRAP_L10N')
@@ -33,8 +43,12 @@ end
 Export('l10n')
 
 
--- Aways include base script
-Script('base.lua')
+-- Always include base script
+local base = os.getenv('BOOTSTRAP_BASE')
+if not base or base == "" then
+	base = "base"
+end
+Script(base .. '.lua')
 
 -- Include any additional lists
 local env_pkglists = os.getenv('BOOTSTRAP_PKGLISTS')
@@ -70,10 +84,10 @@ if env_devices then
 	end
 	devices = usb_devices
 	Export('devices')
-	Script('devices/usb.lua')
+	Script('drivers/usb.lua')
 	devices = pci_devices
-	Script('devices/pci.lua')
-	Unexport('devices')
+	Script('drivers/pci.lua')
+	Unexport('drivers')
 end
 
 -- Include contract if specified

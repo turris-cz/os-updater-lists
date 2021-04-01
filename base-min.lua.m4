@@ -20,7 +20,7 @@ elseif board == "omnia" then
 	forInstallCritical(kmod,file2args(kmod-omnia.list))
 	Install("omnia-support", { critical = true })
 elseif board == "turris1x" then
-	forInstallCritical(kmod,file2args(kmod-turris.list))
+	forInstallCritical(kmod,file2args(kmod-turris1x.list))
 	Install("turris1x-support", { critical = true })
 end
 Install("fstools", { critical = true })
@@ -31,6 +31,7 @@ Install("netifd", "firewall", "dns-resolver", { critical = true})
 
 -- OpenWrt minimum
 Install("ebtables", "dnsmasq-full", "odhcpd", "odhcp6c", { priority = 40 })
+Install("urandom-seed", { priority = 40 })
 Install("opkg", "libustream-openssl", { priority = 40 })
 Uninstall("wget-nossl", { priority = 40 }) -- opkg required SSL variant only
 

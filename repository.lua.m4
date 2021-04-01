@@ -1,6 +1,6 @@
 include(utils.m4)dnl
 
-local feeds = { "base", "core" esyscmd(`awk "/^src-git/{printf \", \\\"%s\\\"\", \$'`2}" '_FEEDS_)}
+local feeds = { "base", "core" eesyscmd(`awk "/^src-git/{printf \", \\\"%s\\\"\", \$'`2}" '_FEEDS_)}
 
 local rroot
 if features.relative_uri then

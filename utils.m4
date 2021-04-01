@@ -1,9 +1,13 @@
 divert(-1)
 
+# esyscmd variant that terminates execution if command exits with non-zero code
+# Usage: eesyscmd(`CMD')
+define(`eesyscmd',`syscmd(`$1')ifelse(sysval,0,,`errprint(Command failed: $1)m4exit(`1')')')
+
 # Transform lines in file to comma separated arguments
 # Usage: file2args(`FILE')
-define(`file2args',`syscmd(test -f _INCLUDE_`'$1)ifelse(sysval,0,,`errprint(File $1 is missing!)m4exit(`1')')dnl
-esyscmd(`sed "/^#/d;s/\s//g;/^\s*\$/d" '_INCLUDE_`$1 | paste -sd "," | tr -d "\n"')')
+define(`file2args',`syscmd(test -f $1)ifelse(sysval,0,,`errprint(File $1 is missing!)m4exit(`1')')dnl
+esyscmd(`sed "/^#/d;s/\s//g;/^\s*\$/d" $1 | paste -sd "," | tr -d "\n"')')
 
 # Expand second argument for all arguments after second one defined as macro
 # with name of first argument.

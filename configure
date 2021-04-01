@@ -12,7 +12,6 @@ usage_fail() {
 	exit 1
 }
 
-# TODO we can improve help text to be correctly parsed for completion
 print_help() {
 	print_usage
 	cat >&2 <<EOF
@@ -63,7 +62,7 @@ shift $((OPTIND-1))
 [ "$#" -eq 0 ] || usage_fail "Unexpected argument:" "$1"
 
 [ -n "$feeds" ] \
-	|| usage_fail "--feeds argument has to be specified to set valid path to feeds.conf."
+	|| usage_fail "-f argument has to be specified to set valid path to feeds.conf."
 
 
 if [ "$(readlink -f "${0%/*}")" != "$PWD" ]; then

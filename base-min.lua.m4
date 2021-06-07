@@ -4,10 +4,6 @@ include(repository.m4)dnl
 list_script('base-fix.lua')
 list_script('base-conditional.lua')
 
--- Updater itself
-Install('updater-ng', 'updater-supervisor', { critical = true })
-Package('updater-ng', { replan = 'finished' })
-
 -- Kernel
 Package("kernel", { reboot = "delayed" })
 Package("kmod-mac80211", { reboot = "delayed" })
@@ -55,17 +51,6 @@ Install("ca-certificates", { priority = 40 })
 Install("ppp", "ppp-mod-pppoe", { priority = 40 })
 
 _FEATURE_GUARD_
-
--- Updater utility
-Install("updater-drivers", { priority = 40 })
-Install("updater-opkg-wrapper", { priority = 40 })
-Install('switch-branch', { priority = 40 })
-
-Package('updater-drivers', { replan = 'finished' })
-Package('l10n-supported', { replan = 'finished' })
-Package('updater-opkg-wrapper', { replan = 'finished' })
-Package('localrepo', { replan = 'finished' })
-Package('switch-branch', { replan = 'finished' })
 
 -- Network tools
 Install("ip-full", "tc", "genl", "ip-bridge", "ss", "nstat", "devlink", "rdma", { priority = 40 })

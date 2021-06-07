@@ -97,4 +97,13 @@ else
 	Install("ath10k-firmware-qca988x", { priority = 40 })
 end
 
+
+-- Install timezone information (required for local time to work)
+for _, zone in pairs({
+		"core", "atlantic", "asia", "africa", "australia-nz", "europe",
+		"northamerica", "india", "pacific", "poles", "simple", "southamerica"
+}) do
+	Install("zoneinfo-" .. zone, { priority = 40 })
+end
+
 _END_FEATURE_GUARD_

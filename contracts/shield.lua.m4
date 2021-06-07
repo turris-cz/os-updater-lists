@@ -4,6 +4,9 @@ _FEATURE_GUARD_
 -- No more Foris and LuCI and data collect UI
 Uninstall("foris", "luci", "luci-base", "turris-webapps", { priority = 45 })
 
+-- Remove some more advanced reForis plugins
+Uninstall("reforis-storage-plugin", { priority = 45 })
+
 -- Alternative versions of packages
 Install("shield-support", { priority = 45 })
 
@@ -15,11 +18,11 @@ Install('common_passwords', { priority = 45 })
 Install('sentinel-i_agree_with_eula', { priority = 45 })
 
 options = {
-    ["dynfw"] = true,
-    ["haas"] = true,
-    ["survey"] = true,
-    ["nikola"] = true,
-    ["minipot"] = true,
+	["dynfw"] = true,
+	["haas"] = true,
+	["survey"] = true,
+	["nikola"] = true,
+	["minipot"] = true,
 }
 Export("options")
 Script("../pkglists/datacollect.lua")
@@ -27,8 +30,8 @@ Unexport("options")
 
 -- Extra software
 options = {
-    ["netmetr"] = true,
-    ["dev-detect"] = true,
+	["netmetr"] = true,
+	["dev_detect"] = true,
 }
 Export("options")
 Script("../pkglists/net_monitoring.lua")

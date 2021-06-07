@@ -16,7 +16,4 @@ list_script('webapps.lua')
 Install("opkg", "libustream-openssl", { priority = 40 })
 Uninstall("wget-nossl", { priority = 40 }) -- opkg required SSL variant only
 
--- IPv6
-Install("ds-lite", "6in4", "6rd", "6to4", { priority = 40 })
-
 _END_FEATURE_GUARD_

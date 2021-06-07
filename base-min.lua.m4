@@ -47,6 +47,7 @@ Install("ca-certificates", { priority = 40 })
 
 -- Network protocols
 Install("ppp", "ppp-mod-pppoe", { priority = 40 })
+Install("ds-lite", "6in4", "6rd", { priority = 40 })
 
 _FEATURE_GUARD_
 

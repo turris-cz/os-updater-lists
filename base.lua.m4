@@ -12,6 +12,10 @@ list_script('terminal-apps.lua')
 list_script('webapps.lua')
 
 
+-- OpenWrt package management
+Install("opkg", "libustream-openssl", { priority = 40 })
+Uninstall("wget-nossl", { priority = 40 }) -- opkg required SSL variant only
+
 -- Install various timezone information so local time would work
 local zoneinfo = {"core", "atlantic", "asia", "africa", "australia-nz", "europe", "northamerica", "india", "pacific", "poles", "simple", "southamerica"}
 for _, zone in pairs(zoneinfo) do

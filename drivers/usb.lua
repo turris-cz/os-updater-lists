@@ -20,6 +20,19 @@ Values of those fields are compared with values in database and if they match th
 appropriate packages are requested.
 ]]
 local db = {
+	-- Audio Adapters -----------------------------------------------------------
+	{ -- C-Media Electronics, Inc. Audio Adapter
+		vendor = 0x0d8c,
+		product = 0x000c,
+		packages = {"kmod-usb-audio"},
+		class = {"audio"}
+	},
+	{ -- C-Media Electronics, Inc. CM106 Like Sound Device
+		vendor = 0x0d8c,
+		product = 0x0102,
+		packages = {"kmod-usb-audio"},
+		class = {"audio"}
+	},
 	-- DVB tunners ---------------------------------------------------------------
 	{ -- TechnoTrend AG TT-connect CT-3650 CI
 		vendor = 0x0b48,

@@ -104,6 +104,13 @@ local db = {
 		packages = {"kmod-usb-acm"},
 		class = {"serial", "z-wave"}
 	},
+	-- Bluetooth dongles--------------------------------------------------------
+	{ -- Cambridge Silicon Radio, Ltd Bluetooth Dongle (HCI mode)
+		vendor = 0x0a12,
+		product = 0x0001,
+		packages = {"kmod-bluetooth"},
+		class = {"bluetooth"}
+	},
 	-- Random number generator ---------------------------------------------------
 	{ -- OpenMoko, Inc. USBtrng hardware random number generator
 		vendor = 0x1d50,

@@ -44,6 +44,13 @@ test-turris-$(1): $(TEST_LUA) $$(if $$(filter latest,$(1)),$(MIGRATE_LUA))
 ifneq ($(1),63.1.2)
 ifneq ($(1),63.0.3)
 
+test: test-drivers-$(1)
+test-$(1): test-drivers-$(1)
+.PHONY: test-drivers-$(1)
+test-drivers-$(1): $(DRIVERS_LUA)
+	@echo " TEST DRIVERS   $(1)"
+	$(Q)tests/updater_$(1).lua --drivers $$^
+
 test: test-pkglists-$(1)
 test-$(1): test-pkglists-$(1)
 .PHONY: test-pkglists-$(1)

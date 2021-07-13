@@ -304,7 +304,7 @@ local function run_test(args, board, entry)
 	env.architectures = board_architectures[board]
 
 	run_sandboxed(entry, nil, function(context)
-		if args.turris or args.pkglist then
+		if args.turris or args.drivers or args.pkglist then
 			-- entry.lua
 			export_value(context, "l10n", {"cs"})
 			export_value(context, "for_l10n", function(fragment)
@@ -312,6 +312,10 @@ local function run_test(args, board, entry)
 			end)
 			-- turris.lua
 			export_value(context, "board", board)
+			if args.drivers then
+				-- drivers.lua + board same as in turris.lua
+				export_value(context, "devices", {"all"})
+			end
 			if args.pkglist then
 				-- pkglist.lua + board same as in turris.lua
 				export_value(context, "options", {"all"})
@@ -324,6 +328,7 @@ end
 local parser = common.parser(updater_version)
 parser:mutex(
 	parser:flag("--turris", "Includes environment as executed from entry script on router."),
+	parser:flag("--drivers", "Include drivers and router environment."),
 	parser:flag("--pkglist", "Include pkglist and router environment.")
 )
 os.exit(common.main(parser, run_test))

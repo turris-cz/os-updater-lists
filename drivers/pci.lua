@@ -29,6 +29,11 @@ local db = {
 }
 
 ----------------------------------------------------------------------------------
+if devices == nil then
+	ERROR("Invalid usage of PCI drivers, variable 'devices' is not defined.")
+	return
+end
+
 for _, device in pairs(devices) do
 	for _, dbdev in pairs(db) do
 		if (type(device) == "string" and device == "all") or

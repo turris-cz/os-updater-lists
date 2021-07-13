@@ -120,6 +120,11 @@ local db = {
 	},
 }
 ----------------------------------------------------------------------------------
+if devices == nil then
+	ERROR("Invalid usage of USB drivers, variable 'devices' is not defined.")
+	return
+end
+
 -- First convert class arrays to set
 for _, dbdev in pairs(db) do
 	local class_set = {}

@@ -17,6 +17,7 @@ LUACHECK ?= luacheck
 # Include LISTS
 include lists.mk
 LISTS_LUA := $(patsubst %,$(DESTDIR)/%.lua,$(LISTS))
+DRIVERS_LUA := $(filter %/drivers/%.lua,$(LISTS_LUA))
 PKGLISTS_LUA := $(filter %/pkglists/%.lua,$(LISTS_LUA))
 CONTRACTS_LUA := $(filter %/contracts/%.lua,$(LISTS_LUA))
 

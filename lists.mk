@@ -8,4 +8,5 @@ LISTS := \
 	updater foris luci terminal-apps webapps \
 
 include contracts/lists.mk
+include drivers/lists.mk
 include pkglists/lists.mk

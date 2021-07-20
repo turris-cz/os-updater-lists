@@ -16,6 +16,11 @@ local db = {
 		device = 0x0030,
 		packages = {"kmod-ath9k"}
 	},
+	{ -- Qualcomm Atheros QCA9377 802.11ac Wireless Network Adapter
+		vendor = 0x168c,
+		device = 0x0042,
+		packages = {"kmod-ath10k", "ath10k-firmware-qca9377"}
+	},
 	{ -- Qualcomm Atheros QCA986x/988x 802.11ac Wireless Network Adapter
 		vendor = 0x168c,
 		device = 0x003c,

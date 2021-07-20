@@ -117,6 +117,12 @@ local db = {
 		packages = {"kmod-usb-acm"},
 		class = {"serial", "z-wave"}
 	},
+	{ -- Silicon Labs CP210x UART Bridge
+                vendor = 0x10c4,
+                product = 0xea60,
+                packages = {"kmod-usb-serial-cp210x"},
+                class = {"serial", "zigbee"}
+        },
 	-- Bluetooth dongles--------------------------------------------------------
 	{ -- Cambridge Silicon Radio, Ltd Bluetooth Dongle (HCI mode)
 		vendor = 0x0a12,

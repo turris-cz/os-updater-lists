@@ -26,6 +26,11 @@ local db = {
 		device = 0x003c,
 		packages = {"kmod-ath10k", "ath10k-firmware-qca988x"}
 	},
+	{ -- Qualcomm Atheros QCA9984 802.11ac Wave 2 Wireless Network Adapter
+                vendor = 0x168c,
+                device = 0x0046,
+                packages = {"kmod-ath10k", "ath10k-firmware-qca9984"}
+        },
 	{ -- MEDIATEK Corp. Device 7612
 		vendor = 0x14c3,
 		device = 0x7612,

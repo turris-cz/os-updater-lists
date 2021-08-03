@@ -1,8 +1,13 @@
 include(utils.m4)dnl
 
 Install('updater-ng', 'updater-supervisor', { critical = true })
-Package('updater-ng', { replan = 'finished' })
-
+if features.request_condition then
+	-- This corresponds to FEATURE_GUARD. We would skip a lot of requests and thus
+	-- we would remove a lot of packages before update without this.
+	Package('updater-ng', { replan = 'finished' })
+else
+	Package("updater-ng", { replan = "immediate" })
+end
 
 _FEATURE_GUARD_
 

@@ -10,10 +10,10 @@ script with `.lua.m4` extension. Script `generate.sh` just copies plain Lua file
 and runs m4 for `*.lua.m4` files. Any other file is ignored.
 
 This repository is used by
-https://gitlab.labs.nic.cz/turris/turris-build[turris-build].
+https://gitlab.nic.cz/turris/turris-build[turris-build].
 
 Workflow of this repository is consistent with workflow of
-https://gitlab.labs.nic.cz/turris/turris-os-packages[turris-os-packages].
+https://gitlab.nic.cz/turris/turris-os-packages[turris-os-packages].
 
 
 List categories

@@ -119,6 +119,13 @@ local db = {
 		packages = {"kmod-bluetooth"},
 		class = {"bluetooth"}
 	},
+	-- Ethernet adapters ---------------------------------------------------------
+	{ -- D-Link, DUB-1312 Gigabit Ethernet Adapter
+		vendor = 0x2001,
+		product = 0x4a00,
+		packages = {"kmod-usb-net-asix-ax88179"},
+		class = {"ethernet"}
+	},
 	-- Serial --------------------------------------------------------------------
 	{ -- Future Technology Devices International Limited, Bridge(I2C/SPI/UART/FIFO)
 		vendor = 0x0403,
@@ -130,6 +137,12 @@ local db = {
 		vendor = 0x0403,
 		product = 0x6001,
 		packages = {"kmod-usb-serial-ftdi"},
+		class = {"serial"}
+	},
+	{ -- Prolific Technology, Inc., PL2303 Serial Port
+		vendor = 0x067b,
+		product = 0x2303,
+		packages = {"kmod-usb-serial-pl2303"},
 		class = {"serial"}
 	},
 	-- Random number generator ---------------------------------------------------

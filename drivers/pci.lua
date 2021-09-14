@@ -48,7 +48,9 @@ for _, device in pairs(devices) do
 	for _, dbdev in pairs(db) do
 		if (type(device) == "string" and device == "all") or
 				(type(device) == "table" and device.vendor == dbdev.vendor and device.device == dbdev.device) then
-			Install(unpack(dbdev.packages), { priority = 40 })
+			for _, package in pairs(dbdev.packages) do
+				Install(package, { priority = 40 })
+			end
 		end
 	end
 end

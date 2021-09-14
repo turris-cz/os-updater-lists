@@ -98,6 +98,27 @@ local db = {
 		packages = {"kmod-carl9170"},
 		class = {"wifi"}
 	},
+	-- Z-Wave --------------------------------------------------------------------
+	{ -- Sigma Designs, Inc. Aeotec Z-Stick Gen5 (ZW090) - UZB
+		vendor = 0x0658,
+		product = 0x0200,
+		packages = {"kmod-usb-acm"},
+		class = {"serial", "z-wave"}
+	},
+	-- Zigbee --------------------------------------------------------------------
+	{ -- Silicon Labs CP210x UART Bridge
+		vendor = 0x10c4,
+		product = 0xea60,
+		packages = {"kmod-usb-serial-cp210x"},
+		class = {"serial", "zigbee"}
+	},
+	-- Bluetooth dongles--------------------------------------------------------
+	{ -- Cambridge Silicon Radio, Ltd Bluetooth Dongle (HCI mode)
+		vendor = 0x0a12,
+		product = 0x0001,
+		packages = {"kmod-bluetooth"},
+		class = {"bluetooth"}
+	},
 	-- Serial --------------------------------------------------------------------
 	{ -- Future Technology Devices International Limited, Bridge(I2C/SPI/UART/FIFO)
 		vendor = 0x0403,
@@ -110,25 +131,6 @@ local db = {
 		product = 0x6001,
 		packages = {"kmod-usb-serial-ftdi"},
 		class = {"serial"}
-	},
-	{ -- Sigma Designs, Inc. Aeotec Z-Stick Gen5 (ZW090) - UZB
-		vendor = 0x0658,
-		product = 0x0200,
-		packages = {"kmod-usb-acm"},
-		class = {"serial", "z-wave"}
-	},
-	{ -- Silicon Labs CP210x UART Bridge
-                vendor = 0x10c4,
-                product = 0xea60,
-                packages = {"kmod-usb-serial-cp210x"},
-                class = {"serial", "zigbee"}
-        },
-	-- Bluetooth dongles--------------------------------------------------------
-	{ -- Cambridge Silicon Radio, Ltd Bluetooth Dongle (HCI mode)
-		vendor = 0x0a12,
-		product = 0x0001,
-		packages = {"kmod-bluetooth"},
-		class = {"bluetooth"}
 	},
 	-- Random number generator ---------------------------------------------------
 	{ -- OpenMoko, Inc. USBtrng hardware random number generator

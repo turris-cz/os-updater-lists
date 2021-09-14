@@ -139,9 +139,7 @@ function Package(context, pkg_name, extra)
 			local valid = utils.arr2set({"delayed", "finished"})
 			assert(valid[value])
 		elseif name == "replan" then
-			-- Note: intentional prevention of immediate replan. If needed in
-			-- future it can be added here.
-			local valid = utils.arr2set({"finished"})
+			local valid = utils.arr2set({"finished", "immediate"})
 			assert(valid[value])
 		elseif name == "abi_change" or name == "abi_change_deep" then
 			if type(value) == "table" then

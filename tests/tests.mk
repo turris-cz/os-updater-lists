@@ -1,4 +1,4 @@
-TEST_VARIANTS := latest 63.1.2 63.0.3
+TEST_VARIANTS := latest 68.0.0 63.1.2 63.0.3
 
 
 .PHONY: check

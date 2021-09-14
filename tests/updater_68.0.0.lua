@@ -5,8 +5,8 @@ local common = require "common"
 local utils = require "utils"
 local tools = require "tools"
 
-local updater_version = "69.1.3"
-local tos_version = "99.0.0"
+local updater_version = "68.0.0"
+local tos_version = "5.1.10"
 
 ----------------------------------------------------------------------------------
 local os_release = {
@@ -147,15 +147,8 @@ end
 function Repository(context, name, repo_uri, extra)
 	assert(type(name) == "string")
 	assert(type(repo_uri) == "string")
-	for name, value in pairs(extra or {}) do
-		assert(type(name) == "string")
-		if name == "pkg_hash_required" then
-			assert(value)
-		else
-			-- At the moment no other extra arguments are used. This can be expanded later on
-			error("Unknown extra argument: " .. name)
-		end
-	end
+	-- At the moment no extra arguments are used. This can be expanded later on
+	assert(extra == nil)
 end
 
 function Install(context, ...)
@@ -167,6 +160,8 @@ function Install(context, ...)
 				if name == "priority" then
 					assert(type(value) == "number")
 					assert(value >= 0 and value <= 100)
+				elseif name == "version" then
+					assert(type(value) == "string")
 				elseif name == "repository" then
 					assert(table_of_types(value, "string"))
 				elseif name == "reinstall" or name == "critical" or name == "optional" then
@@ -179,8 +174,6 @@ function Install(context, ...)
 			end
 		else
 			assert(type(arg) == "string")
-			-- It is either a package name or package name with version specifier
-			assert(arg:match("^%S+$") or arg:match("^%S+ %([<>=~]+%s*%S+%s*%)$"))
 		end
 	end
 end
@@ -274,10 +267,7 @@ utils.merge(env, {
 		'relative_uri',
 		'no_returns',
 		'no_error_virtual',
-		'request_condition',
-		'fatal_missing_pkg_hash',
-		'requests_version',
-		'priority_requests',
+		'request_condition'
 	}),
 	os_release = os_release,
 	host_os_release = os_release, -- intentionally same object as os_release

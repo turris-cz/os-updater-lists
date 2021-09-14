@@ -147,12 +147,11 @@ end
 function Repository(context, name, repo_uri, extra)
 	assert(type(name) == "string")
 	assert(type(repo_uri) == "string")
+	assert(extra.pkg_hash_required) -- all our repositories should require hashes
 	for name, value in pairs(extra or {}) do
 		assert(type(name) == "string")
-		if name == "pkg_hash_required" then
-			assert(value)
-		else
-			-- At the moment no other extra arguments are used. This can be expanded later on
+		-- At the moment no other extra arguments are used. This can be expanded later on
+		if name ~= "pkg_hash_required" then
 			error("Unknown extra argument: " .. name)
 		end
 	end

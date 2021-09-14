@@ -147,8 +147,10 @@ end
 function Repository(context, name, repo_uri, extra)
 	assert(type(name) == "string")
 	assert(type(repo_uri) == "string")
-	-- At the moment no extra arguments are used. This can be expanded later on
-	assert(extra == nil)
+	for name, _ in pairs(extra or {}) do
+		-- At the moment no other extra arguments are used. This can be expanded later on
+		error("Unknown extra argument: " .. name)
+	end
 end
 
 function Install(context, ...)

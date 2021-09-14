@@ -9,9 +9,14 @@ else
 	rroot = (repo_base_uri or "https://repo.turris.cz/hbs") .. "/" .. board
 end
 
+local extra = {}
+if features.fatal_missing_pkg_hash then
+	extra["pkg_hash_required"] = true
+end
+
 for _, feed in ipairs(feeds) do
 	-- Standard Turris OS package repository
-	Repository(feed, rroot .. "/packages/" .. feed)
+	Repository(feed, rroot .. "/packages/" .. feed, extra)
 dnl Note: to test just package lists you can replace preceding line with:
 dnl	Repository(feed, "https://repo.turris.cz/hbs/" .. board .. "/packages/" .. feed, {
 dnl		pubkey = {
@@ -20,7 +25,7 @@ dnl			"data:base64,dW50cnVzdGVkIGNvbW1lbnQ6IFR1cnJpcyByZWxlYXNlIGtleSBnZW4gMQpSV
 dnl			-- Turris development key
 dnl			"data:base64,dW50cnVzdGVkIGNvbW1lbnQ6IFR1cnJpcyBPUyBkZXZlbCBrZXkKUldTMEZBMU51bjdKRHQwTDhTalJzRFJKR0R2VUNkRGRmczIxZmVpVytxcEdITk1oVlo5MzBoa3kK",
 dnl		}
-dnl	})
+dnl	}, extra)
 end
 
 INFO("Target Turris OS: _TURRIS_OS_VERSION_")

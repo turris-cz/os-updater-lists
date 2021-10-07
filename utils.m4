@@ -59,10 +59,14 @@ function list_script(list)
 	end
 end
 
--- Our own version of for_l10n to override priority
-function for_l10n(fragment)
+-- Our own version of for_l10n to override priority and use condition
+function for_l10n(fragment, condition)
 	for _, lang in pairs(l10n or {}) do
-		Install(fragment .. lang, {optional = true, priority = 10})
+		Install(fragment .. lang, {
+			optional = true,
+			priority = 10,
+			condition = condition
+		})
 	end
 end
 ----------------------------------------------------------------------------------

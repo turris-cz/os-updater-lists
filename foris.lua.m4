@@ -2,12 +2,12 @@ include(utils.m4)dnl
 _FEATURE_GUARD_
 
 local foris_plugins = {
-	["diagnostics"] = "turris-diagnostics",
-	["netmetr"] = "netmetr",
-	["openvpn"] = "openvpn",
+	["diagnostics"] = {"foris", "turris-diagnostics"},
+	["netmetr"] = {"foris", "netmetr"},
+	["openvpn"] = {"foris", "openvpn"},
 	["pakon"] = "pakon",
-	["storage"] = false,
-	["subordinates"] = "turris-netboot-tools",
+	["storage"] = "foris",
+	["subordinates"] = {"foris", "turris-netboot-tools"},
 }
 
 local reforis_plugins = {
@@ -25,7 +25,7 @@ local reforis_plugins = {
 
 ----------------------------------------------------------------------------------
 
-Install("foris", "foris-storage-plugin", { priority = 40 })
+Install("lighttpd-https-cert", { priority = 40 })
 Install("reforis", "reforis-storage-plugin", { priority = 40 })
 
 for plugin, condition in pairs(foris_plugins) do
@@ -56,13 +56,9 @@ for plugin, condition in pairs(reforis_plugins) do
 	end
 end
 
-if for_l10n then
-	for_l10n("foris-l10n-")
-	for_l10n("reforis-l10n-")
-	for_l10n('pkglists-l10n-')
-end
-
-Install("lighttpd-https-cert", { priority = 40 })
+for_l10n("foris-l10n-", "foris")
+for_l10n("reforis-l10n-")
+for_l10n('pkglists-l10n-')
 
 -- Workaround how to install foris-controller-nextcloud-module
 -- because there is no nextcloud-plugin

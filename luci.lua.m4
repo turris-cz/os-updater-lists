@@ -100,10 +100,8 @@ end
 
 
 Install("luci", "luci-base", { priority = 40 })
-if for_l10n then
-	Install("luci-i18n-base-en", { optional = true, priority = 10 })
-	for_l10n("luci-i18n-base-")
-end
+Install("luci-i18n-base-en", { optional = true, priority = 10 })
+for_l10n("luci-i18n-base-")
 
 Install("luci-app-commands", { priority = 40 })
 Install("luci-proto-ipv6", "luci-proto-ppp", { priority = 40 })

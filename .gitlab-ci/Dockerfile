@@ -14,5 +14,3 @@ RUN \
 COPY feeds.conf /feeds.conf
 
 CMD [ "bash" ]
-
-# vim: ft=dockerfile

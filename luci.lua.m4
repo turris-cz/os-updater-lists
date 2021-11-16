@@ -87,6 +87,15 @@ local luci_apps = {
 	"wol",
 }
 
+
+Install("luci", "luci-base", { priority = 40 })
+Install("luci-i18n-base-en", { optional = true, priority = 10 })
+
+Install("luci-app-commands", { priority = 40 })
+Install("luci-proto-ipv6", "luci-proto-ppp", { priority = 40 })
+-- Install resolver-debug for DNS debuging
+Install("resolver-debug", { priority = 40 })
+
 -- Conditional install requests for language packages
 for _, lang in pairs({"en", unpack(l10n or {})}) do
 	for _, name in pairs(luci_apps) do
@@ -96,16 +105,11 @@ for _, lang in pairs({"en", unpack(l10n or {})}) do
 			condition = "luci-app-" .. name
 		})
 	end
+	Install("luci-i18n-base-" .. lang, {
+		priority = 10,
+		optional = true,
+		condition = "luci-base"
+	})
 end
-
-
-Install("luci", "luci-base", { priority = 40 })
-Install("luci-i18n-base-en", { optional = true, priority = 10 })
-for_l10n("luci-i18n-base-")
-
-Install("luci-app-commands", { priority = 40 })
-Install("luci-proto-ipv6", "luci-proto-ppp", { priority = 40 })
--- Install resolver-debug for DNS debuging
-Install("resolver-debug", { priority = 40 })
 
 _END_FEATURE_GUARD_

@@ -72,7 +72,6 @@ end
 Install("turris-version", "start-indicator", { priority = 40 })
 Install("turris-utils", "user-notify", "watchdog_adjust", { priority = 40 })
 Install("turris-diagnostics", { priority = 40 })
-for_l10n("user-notify-l10n-")
 if board == "mox" then
 	Install("mox-otp", { priority = 40 })
 elseif board == "omnia" then

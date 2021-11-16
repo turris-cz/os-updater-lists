@@ -10,6 +10,7 @@ list_script('luci.lua')
 list_script('foris.lua')
 list_script('terminal-apps.lua')
 list_script('webapps.lua')
+list_script('localization.lua')
 
 
 -- OpenWrt package management

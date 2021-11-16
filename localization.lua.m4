@@ -32,5 +32,8 @@ for_l10n('pkglists')
 -- User-notify
 for_l10n("user-notify")
 
+-- Diagnostics
+for_l10n("turris-diagnostics")
+
 
 _END_FEATURE_GUARD_

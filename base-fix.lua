@@ -191,3 +191,12 @@ if installed and installed["pkglists"] and version_match(installed["pkglists"].v
 	Install("fix-pkglists-nikola-to-fwlogs")
 	Package("fix-pkglists-nikola-to-fwlogs", { replan = "finished" })
 end
+
+-- Fix lighttpd configuration to incorporate upstream changes
+-- By moving files from one folder to another.
+-- This allows use to smoothly use upstream variant.
+if not version_match or not installed or
+                (installed["lighttpd"] and version_match(installed["lighttpd"].version, "<1.4.64-3")) then
+        Install("fix-lighttpd-sync-with-upstream")
+        Package("fix-lighttpd-sync-with-upstream", { replan = "finished" })
+end

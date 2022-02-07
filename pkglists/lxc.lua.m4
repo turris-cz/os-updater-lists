@@ -7,6 +7,6 @@ forInstall(lxc,attach,auto,console,copy,create,destroy,freeze,info,ls,monitor,mo
 Install("luci-app-lxc", { priority = 40 })
 
 Install("kmod-veth", { priority = 40 })
-Install("gnupg", "gnupg-utils", "getopt", "tar", "wget", { priority = 40 })
+Install("getopt", "tar", "wget", { priority = 40 })
 
 _END_FEATURE_GUARD_

@@ -18,7 +18,7 @@ end
 Install("mount-utils", "losetup", "lsblk", "blkid", "file", { priority = 40 })
 Install("fdisk", "cfdisk", "hdparm", "resize2fs", "partx-utils", { priority = 40 })
 Install("acl", "attr", { priority = 40 })
-Install("blockd" , "smartd", "smartmontools", { priority = 40 })
+Install("blockd" , "smartd", "smartmontools", "smartmontools-drivedb", { priority = 40 })
 Install("swap-utils", { priority = 40 })
 
 -- File systems userspace utilities

@@ -36,6 +36,11 @@ local db = {
 		device = 0x7612,
 		packages = {"kmod-mt76"}
 	},
+	{ -- MEDIATEK Corp. Device 7615
+                vendor = 0x7615,
+                device = 0x14c3,
+                packages = {"kmod-mt7615e"}
+	},
 }
 
 ----------------------------------------------------------------------------------

@@ -91,6 +91,8 @@ local luci_apps = {
 Install("luci", "luci-base", { priority = 40 })
 Install("luci-i18n-base-en", { optional = true, priority = 10 })
 
+Install("luci-mod-dashboard", { priority = 40 })
+
 Install("luci-app-commands", { priority = 40 })
 Install("luci-proto-ipv6", "luci-proto-ppp", { priority = 40 })
 -- Install resolver-debug for DNS debuging

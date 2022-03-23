@@ -1,3 +1,4 @@
+include(utils.m4)dnl
 -- Fixes and hacks to migrate from older setups
 
 -- ABI changed in libubus with version 2019-12-27
@@ -190,4 +191,12 @@ end
 if installed and installed["pkglists"] and version_match(installed["pkglists"].version, "<1.7.0") then
 	Install("fix-pkglists-nikola-to-fwlogs")
 	Package("fix-pkglists-nikola-to-fwlogs", { replan = "finished" })
+end
+
+-- The Turris 1.x SD card controller gets sometimes switched to read only mode
+-- and there was previously nothing to switch it back. This fix adds such
+-- command to the boot command (U-Boot) that is executed on every bootup.
+if board == "turris1x" and version_match(os_release.VERSION, "<=6.0.0") then
+	Install("fix-turris1x-btrfs-sdcard")
+	Package("fix-turris1x-btrfs-sdcard", { replan = "finished" })
 end

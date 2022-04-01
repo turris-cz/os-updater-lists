@@ -1,3 +1,4 @@
+include(utils.m4)dnl
 -- Fixes and hacks to migrate from older setups
 
 -- ABI changed in libubus with version 2019-12-27
@@ -199,4 +200,12 @@ if not version_match or not installed or
                 (installed["lighttpd"] and version_match(installed["lighttpd"].version, "<1.4.64-3")) then
         Install("fix-lighttpd-sync-with-upstream")
         Package("fix-lighttpd-sync-with-upstream", { replan = "finished" })
+end
+
+-- The Turris 1.x SD card controller gets sometimes switched to read only mode
+-- and there was previously nothing to switch it back. This fix adds such
+-- command to the boot command (U-Boot) that is executed on every bootup.
+if board == "turris1x" and version_match(os_release.VERSION, "<=6.0.0") then
+	Install("fix-turris1x-btrfs-sdcard")
+	Package("fix-turris1x-btrfs-sdcard", { replan = "finished" })
 end

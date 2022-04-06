@@ -196,7 +196,7 @@ end
 -- The Turris 1.x SD card controller gets sometimes switched to read only mode
 -- and there was previously nothing to switch it back. This fix adds such
 -- command to the boot command (U-Boot) that is executed on every bootup.
-if board == "turris1x" and version_match(os_release.VERSION, "<=6.0.0") then
+if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
 	Install("fix-turris1x-btrfs-sdcard")
 	Package("fix-turris1x-btrfs-sdcard", { replan = "finished" })
 end

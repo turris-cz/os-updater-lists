@@ -141,13 +141,17 @@ end
 -- With uboot-envtools version 2018.03-4 environment configuration was fixed. Problem
 -- is that it is not applied in default as script checks for existence of
 -- /etc/config/ubootenv file and does nothing.
--- In case of Mox we also move fw_env.config from mox-support package. Because of
--- that we have to update mox-support first so we would not remove generated file.
+-- In case of Mox the fw_env.config file was part of the mox-generic-support
+-- package. We can't rely on updater stealing files between packages because
+-- /etc/fw_env.config file is generated and not tracked as part of the package.
+-- Thus we have to make sure that file is removed before we generate the new
+-- content (to prevent removal by updater later on). We do this by adding
+-- dependency on mox-generic-support for uboot-envtools.
 if not version_match or not installed or
 		(installed["uboot-envtools"] and version_match(installed["uboot-envtools"].version, "<2018.03-4")) then
 	Package("uboot-envtools", { deps = "fix-uboot-env-reset" })
 	if board == "mox" then
-		Package("uboot-envtools", { deps = "mox-support" })
+		Package("uboot-envtools", { deps = "mox-generic-support" })
 	end
 end
 

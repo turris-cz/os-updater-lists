@@ -5,6 +5,7 @@ hwmon-lm90
 leds-gpio
 input-gpio-keys
 
+crypto-hw-talitos
 rtc-ds1307
 
 # For Turris 1.1

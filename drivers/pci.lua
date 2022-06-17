@@ -46,6 +46,11 @@ local db = {
 		vendor = 0x14c3,
 		packages = {"kmod-mt7615e", "kmod-mt7615-firmware"}
 	},
+	{ -- MEDIATEK Corp. RZ608 Wi-Fi 6E 80MHz
+		vendor = 0x14c3,
+		device = 0x0608,
+		packages = {"kmod-mt7921e"}
+	},
 }
 
 ----------------------------------------------------------------------------------

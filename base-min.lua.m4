@@ -33,11 +33,10 @@ Install("urandom-seed", { priority = 40 })
 Install("turris-defaults", { priority = 40 })
 Install("cronie", { priority = 40 })
 Install("syslog-ng", "logrotate", { priority = 40 })
+Install("knot-resolver", { priority = 40 })
 if board == "turris1x" then
 	Install("unbound", "unbound-anchor", { priority = 40 })
 	Install("turris1x-btrfs", { priority = 40 }) -- Currently only SD card root is supported
-else
-	Install("knot-resolver", { priority = 40 })
 end
 
 -- Certificates

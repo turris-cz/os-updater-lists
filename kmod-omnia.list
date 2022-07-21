@@ -3,6 +3,7 @@ usb-serial-qualcomm
 gpio-pca953x
 i2c-mux-pca954x
 eeprom-at24
+leds-turris-omnia
 
 # Various led triggers
 ledtrig-gpio

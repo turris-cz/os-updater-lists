@@ -1,5 +1,9 @@
+# I2C (to enable RTC)
+i2c-pxa
+
 # Real time clock
 rtc-ds1307
+
 # Button and led on A module
 gpio-button-hotplug
 

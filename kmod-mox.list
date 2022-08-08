@@ -7,6 +7,9 @@ rtc-ds1307
 # Button and led on A module
 gpio-button-hotplug
 
+# Enable SafeXcel crypto acceleration
+crypto-hw-safexcel
+
 # SDIO Wi-Fi and BT
 mwlwifi
 mwifiex-sdio

@@ -2,6 +2,7 @@
 button-hotplug
 hwmon-lm90
 
+leds-turris-1x
 leds-gpio
 input-gpio-keys
 

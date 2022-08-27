@@ -8,6 +8,8 @@ gpio-pca953x
 
 crypto-hw-talitos
 
+ptp-gianfar
+
 # RTC
 rtc-ds1307
 

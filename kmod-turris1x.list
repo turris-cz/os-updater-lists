@@ -7,8 +7,6 @@ leds-gpio
 input-gpio-keys
 gpio-pca953x
 
-crypto-hw-talitos
-
 ptp-qoriq
 
 # RTC

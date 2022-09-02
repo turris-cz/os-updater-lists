@@ -213,3 +213,10 @@ if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSI
 	Install("fix-turris1x-btrfs-sdcard")
 	Package("fix-turris1x-btrfs-sdcard", { replan = "finished" })
 end
+
+-- OpenWrt 21.02 introduced limit for 11 characters for firewall zone
+-- This fix package trims all zone names to 11 characters.
+if version_match(os_release.VERSION, "<=6.0.0") then
+        Install("fix-firewall-zone-limit")
+        Package("fix-firewall-zone-limit", { replan = "finished" })
+end

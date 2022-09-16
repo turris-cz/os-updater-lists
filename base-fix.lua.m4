@@ -216,14 +216,14 @@ end
 
 -- OpenWrt 21.02 introduced limit for 11 characters for firewall zone
 -- This fix package trims all zone names to 11 characters.
-if version_match(os_release.VERSION, "<=6.0.0") then
-        Install("fix-firewall-zone-limit")
-        Package("fix-firewall-zone-limit", { replan = "finished" })
+if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
+	Install("fix-firewall-zone-limit")
+	Package("fix-firewall-zone-limit", { replan = "finished" })
 end
 
 -- OpenWrt 21.02 introduced the new way for configuring network devices.
 -- They can configure L2 and L3 layers separately
-if version_match(os_release.VERSION, "<=6.0.0") then
-        Install("fix-network-devices")
-        Package("fix-network-devices", { replan = "finished" })
+if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
+	Install("fix-network-devices")
+	Package("fix-network-devices", { replan = "finished" })
 end

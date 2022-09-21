@@ -1,5 +1,6 @@
 DRIVERS += \
 	pci \
+	sdio \
 	usb
 
 

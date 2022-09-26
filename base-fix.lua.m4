@@ -197,10 +197,33 @@ if installed and installed["pkglists"] and version_match(installed["pkglists"].v
 	Package("fix-pkglists-nikola-to-fwlogs", { replan = "finished" })
 end
 
+-- Fix lighttpd configuration to incorporate upstream changes
+-- By moving files from one folder to another.
+-- This allows use to smoothly use upstream variant.
+if not version_match or not installed or
+                (installed["lighttpd"] and version_match(installed["lighttpd"].version, "<1.4.64-3")) then
+        Install("fix-lighttpd-sync-with-upstream")
+        Package("fix-lighttpd-sync-with-upstream", { replan = "finished" })
+end
+
 -- The Turris 1.x SD card controller gets sometimes switched to read only mode
 -- and there was previously nothing to switch it back. This fix adds such
 -- command to the boot command (U-Boot) that is executed on every bootup.
 if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
 	Install("fix-turris1x-btrfs-sdcard")
 	Package("fix-turris1x-btrfs-sdcard", { replan = "finished" })
+end
+
+-- OpenWrt 21.02 introduced limit for 11 characters for firewall zone
+-- This fix package trims all zone names to 11 characters.
+if version_match(os_release.VERSION, "<=6.0.0") then
+        Install("fix-firewall-zone-limit")
+        Package("fix-firewall-zone-limit", { replan = "finished" })
+end
+
+-- OpenWrt 21.02 introduced the new way for configuring network devices.
+-- They can configure L2 and L3 layers separately
+if version_match(os_release.VERSION, "<=6.0.0") then
+        Install("fix-network-devices")
+        Package("fix-network-devices", { replan = "finished" })
 end

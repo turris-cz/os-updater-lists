@@ -13,4 +13,8 @@ if options and options.pakon then
 	Install("pakon", { priority = 40 })
 end
 
+if options and options.morce then
+	Install("morce", { priority = 40 })
+end
+
 _END_FEATURE_GUARD_

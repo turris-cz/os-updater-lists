@@ -36,10 +36,20 @@ local db = {
 		device = 0x7612,
 		packages = {"kmod-mt76"}
 	},
+	{ -- MEDIATEK Corp. MT7915E 802.11ax PCI Express Wireless Network Adapter
+		vendor = 0x14c3,
+		device = 0x7915,
+		packages = {"kmod-mt7915e"}
+	},
 	{ -- MEDIATEK Corp. Device 7615
-                vendor = 0x14c3,
-                device = 0x7615,
-                packages = {"kmod-mt7615e"}
+		device = 0x7615,
+		vendor = 0x14c3,
+		packages = {"kmod-mt7615e", "kmod-mt7615-firmware"}
+	},
+	{ -- MEDIATEK Corp. RZ608 Wi-Fi 6E 80MHz
+		vendor = 0x14c3,
+		device = 0x0608,
+		packages = {"kmod-mt7921e"}
 	},
 }
 

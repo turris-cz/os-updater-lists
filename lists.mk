@@ -5,7 +5,7 @@ ENTRY_LISTS := \
 LISTS := \
 	$(ENTRY_LISTS) \
 	base-fix base-conditional repository \
-	updater foris luci terminal-apps webapps \
+	updater foris luci localization terminal-apps webapps \
 
 include contracts/lists.mk
 include drivers/lists.mk

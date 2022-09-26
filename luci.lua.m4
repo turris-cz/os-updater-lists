@@ -2,6 +2,7 @@ include(utils.m4)dnl
 _FEATURE_GUARD_
 
 local luci_apps = {
+	"acl",
 	"acme",
 	"adblock",
 	"advanced-reboot",
@@ -9,12 +10,9 @@ local luci_apps = {
 	"aria2",
 	"attendedsysupgrade",
 	"banip",
+	"base",
 	"bcp38",
-	"bird1-ipv4",
-	"bird1-ipv6",
-	"bmx6",
 	"bmx7",
-	"cjdns",
 	"clamav",
 	"commands",
 	"cshark",
@@ -22,31 +20,29 @@ local luci_apps = {
 	"ddns",
 	"diag-core",
 	"dnscrypt-proxy",
+	"dockerman",
 	"dump1090",
 	"dynapoint",
-	"e2guardian",
+	"eoip",
 	"firewall",
+	"frpc",
+	"frps",
 	"fwknopd",
 	"hd-idle",
-	"hnet",
 	"https-dns-proxy",
-	"ipfixprobe",
 	"ksmbd",
 	"lxc",
 	"minidlna",
 	"mjpg-streamer",
-	"mosquitto",
 	"mwan3",
 	"nextdns",
 	"nft-qos",
 	"nlbwmon",
-	"noddos",
 	"ntpc",
 	"nut",
 	"ocserv",
 	"olsr",
-	"olsr-services",
-	"olsr-viz",
+	"omcproxy",
 	"openvpn",
 	"opkg",
 	"p910nd",
@@ -56,16 +52,13 @@ local luci_apps = {
 	"qos",
 	"radicale",
 	"radicale2",
-	"rainbow",
-	"rosy-file-server",
 	"rp-pppoe-server",
-	"samba",
 	"samba4",
+	"ser2net",
 	"shadowsocks-libev",
 	"shairplay",
-	"siitwizard",
 	"simple-adblock",
-	"snmpd",
+	"smartdns",
 	"splash",
 	"sqm",
 	"squid",
@@ -79,13 +72,27 @@ local luci_apps = {
 	"unbound",
 	"upnp",
 	"vnstat",
-	"vpn-policy-routing",
+	"vnstat2",
 	"vpnbypass",
+	"vpn-policy-routing",
 	"watchcat",
 	"wifischedule",
 	"wireguard",
 	"wol",
+	"xinetd",
+	"yggdrasil",
 }
+
+
+Install("luci", "luci-base", { priority = 40 })
+Install("luci-i18n-base-en", { optional = true, priority = 10 })
+
+Install("luci-mod-dashboard", { priority = 40 })
+
+Install("luci-app-commands", { priority = 40 })
+Install("luci-proto-ipv6", "luci-proto-ppp", { priority = 40 })
+-- Install resolver-debug for DNS debuging
+Install("resolver-debug", { priority = 40 })
 
 -- Conditional install requests for language packages
 for _, lang in pairs({"en", unpack(l10n or {})}) do
@@ -96,16 +103,11 @@ for _, lang in pairs({"en", unpack(l10n or {})}) do
 			condition = "luci-app-" .. name
 		})
 	end
+	Install("luci-i18n-base-" .. lang, {
+		priority = 10,
+		optional = true,
+		condition = "luci-base"
+	})
 end
-
-
-Install("luci", "luci-base", { priority = 40 })
-Install("luci-i18n-base-en", { optional = true, priority = 10 })
-for_l10n("luci-i18n-base-")
-
-Install("luci-app-commands", { priority = 40 })
-Install("luci-proto-ipv6", "luci-proto-ppp", { priority = 40 })
--- Install resolver-debug for DNS debuging
-Install("resolver-debug", { priority = 40 })
 
 _END_FEATURE_GUARD_

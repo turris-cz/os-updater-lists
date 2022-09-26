@@ -33,11 +33,10 @@ Install("urandom-seed", { priority = 40 })
 Install("turris-defaults", { priority = 40 })
 Install("cronie", { priority = 40 })
 Install("syslog-ng", "logrotate", { priority = 40 })
+Install("knot-resolver", { priority = 40 })
 if board == "turris1x" then
 	Install("unbound", "unbound-anchor", { priority = 40 })
 	Install("turris1x-btrfs", { priority = 40 }) -- Currently only SD card root is supported
-else
-	Install("knot-resolver", { priority = 40 })
 end
 
 -- Certificates
@@ -53,7 +52,7 @@ _FEATURE_GUARD_
 
 -- Network tools
 Install("ip-full", "tc", "genl", "ip-bridge", "ss", "nstat", "devlink", "rdma", { priority = 40 })
-Install("iputils-ping", "iputils-ping6", "iputils-tracepath", "iputils-tracepath6", "iputils-traceroute6", { priority = 40 })
+Install("iputils-ping", "iputils-tracepath", { priority = 40 })
 Install("iptables", "ip6tables", "conntrack", { priority = 40 })
 Install("bind-client", "bind-dig", { priority = 40 })
 Install("umdns", { priority = 40 })
@@ -72,14 +71,12 @@ end
 Install("turris-version", "start-indicator", { priority = 40 })
 Install("turris-utils", "user-notify", "watchdog_adjust", { priority = 40 })
 Install("turris-diagnostics", { priority = 40 })
-for_l10n("user-notify-l10n-")
+Install("rainbow", { priority = 40 })
 if board == "mox" then
 	Install("mox-otp", { priority = 40 })
 elseif board == "omnia" then
-	Install("turris-rainbow", { priority = 40 })
 	Install("libatsha204", { priority = 40 })
 elseif board == "turris1x" then
-	Install("turris-rainbow", { priority = 40 })
 	Install("libatsha204", "update_mac", { priority = 40 })
 end
 if board ~= "turris1x" then

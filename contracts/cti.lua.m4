@@ -7,20 +7,6 @@ Install("omnia-cti-support", { priority = 60 })
 -- Extra security
 Install('common_passwords')
 
--- Data collection
-Install('sentinel-i_agree_with_eula')
-
-options = {
-    ["dynfw"] = true,
-    ["haas"] = true,
-    ["survey"] = true,
-    ["fwlogs"] = true,
-    ["minipot"] = true,
-}
-Export("options")
-Script("../pkglists/datacollect.lua")
-Unexport("options")
-
 
 -- Contracted routers have in boot environment set contract variable that is used
 -- in boot arguments. This variable should be preserved but due to bug in rescue

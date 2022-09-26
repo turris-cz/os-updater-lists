@@ -1,6 +1,7 @@
 # Wi-Fi drivers
 ath9k
 ath10k
+mt7915e
 
 # Firewall
 ipt-offload

@@ -2,13 +2,12 @@
 button-hotplug
 hwmon-lm90
 
+leds-turris-1x
 leds-gpio
 input-gpio-keys
 gpio-pca953x
 
-crypto-hw-talitos
-
-ptp-gianfar
+ptp-qoriq
 
 # RTC
 rtc-ds1307

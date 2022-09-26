@@ -18,7 +18,7 @@ end
 Install("mount-utils", "losetup", "lsblk", "blkid", "file", { priority = 40 })
 Install("fdisk", "cfdisk", "hdparm", "resize2fs", "partx-utils", { priority = 40 })
 Install("acl", "attr", { priority = 40 })
-Install("blockd" , "smartd", "smartmontools", { priority = 40 })
+Install("blockd" , "smartd", "smartmontools", "smartmontools-drivedb", { priority = 40 })
 Install("swap-utils", { priority = 40 })
 
 -- File systems userspace utilities
@@ -63,6 +63,13 @@ if options and options.encrypt then
 	forInstall(kmod-crypto,cbc,ctr,pcbc,des,ecb,xts)
 	forInstall(kmod-crypto,cmac,crc32c,sha1,sha256,sha512,md4,md5,hmac)
 	forInstall(kmod-crypto,seqiv,ccm,deflate)
+
+        if board == "mox" then
+                Install("kmod-crypto-hw-safexcel", { priority = 40 })
+        elseif board == "turris1x" then
+                Install("kmod-crypto-hw-talitos", { priority = 40 })
+        end
+
 end
 
 _END_FEATURE_GUARD_

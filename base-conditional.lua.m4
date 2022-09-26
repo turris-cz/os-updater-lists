@@ -3,11 +3,13 @@ include(utils.m4)dnl
 
 _FEATURE_GUARD_
 
--- Install replacement link for python when python-base is not installed and python3-base is
-Install("python3-python", { condition = {Not("python-base"), "python3-base"}, priority = 40 })
-
 -- Reload of OpenVPN on network restart to ensure fast reconnect
 Install("openvpn-hotplug", { priority = 30, condition = "openvpn" })
+
+-- Install emulated atsha204 when we are running in the container
+if container then
+	Install("libatsha204-emul", { priority = 30, condition = "libatsha204" })
+end
 
 
 _END_FEATURE_GUARD_

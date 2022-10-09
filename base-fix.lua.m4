@@ -230,7 +230,7 @@ end
 
 -- Since OpenWrt 21.02 mosquitto runs under own user
 -- We need to change ownership of existing files to have it working for reForis Access plugin
-if version_match(os_release.VERSION, "<=6.0.0") then
+if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
         Install("fix-remote-access-ca-permissions")
         Package("fix-remote-access-ca-permissions", { replan = "finished" })
 end

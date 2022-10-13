@@ -234,3 +234,15 @@ if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
         Install("fix-remote-access-ca-permissions")
         Package("fix-remote-access-ca-permissions", { replan = "finished" })
 end
+
+-- LEDs migration from old downstream solution to upstream solution
+if board == "omnia" and os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
+        Install("fix-omnia-leds-migrate")
+        Package("fix-omnia-leds-migrate", { replan = "finished" })
+end
+
+if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
+        Install("fix-turris1x-leds-migrate")
+        Package("fix-turris1x-leds-migrate", { replan = "finished" })
+end
+

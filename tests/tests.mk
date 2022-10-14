@@ -21,6 +21,10 @@ TEST_LUA := $(filter-out %bootstrap.lua,$(LISTS_LUA))
 MIGRATE_LUA := $(filter %migrate3x.lua,$(TEST_LUA))
 TEST_LUA := $(filter-out %migrate3x.lua,$(TEST_LUA))
 
+# Migration script has to be readable only by latest version
+MIGRATE_LUA := $(filter %migrate5x.lua,$(TEST_LUA))
+TEST_LUA := $(filter-out %migrate5x.lua,$(TEST_LUA))
+
 define TEST
 
 .PHONY: test-$(1)

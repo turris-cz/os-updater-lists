@@ -253,3 +253,11 @@ if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
         Install("fix-firewall-check-reboot")
 end
 
+-- Some packages were renamed in OpenWrt 21.02 release, but upstream
+-- did not take in mind provides, so users could get cryptic message
+-- that some packages are not available
+
+if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
+	list_script('migrate5x.lua')
+end
+

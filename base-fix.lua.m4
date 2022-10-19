@@ -248,6 +248,6 @@ end
 
 -- Make sure we prevent input connections if wan ruleset disappears
 if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
-        Install("fix-firewall-doublecheck")
+        Install("fix-firewall-doublesafe")
 end
 

@@ -82,6 +82,7 @@ elseif board == "turris1x" then
 end
 if board ~= "turris1x" then
 	Install("schnapps", { priority = 40 })
+	Install("turris-snapshots-web", { priority = 40 })
 end
 
 

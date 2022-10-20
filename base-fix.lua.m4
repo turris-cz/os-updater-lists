@@ -246,3 +246,10 @@ if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSI
         Package("fix-turris1x-leds-migrate", { replan = "finished" })
 end
 
+-- Make sure we prevent input connections if wan ruleset disappears
+-- We also make router reboot as it seems that there might be a lot of broken after TOS 6.0 update
+if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
+        Install("fix-firewall-doublesafe")
+        Install("fix-firewall-check-reboot")
+end
+

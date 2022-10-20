@@ -71,6 +71,7 @@ end
 Install("turris-version", "start-indicator", { priority = 40 })
 Install("turris-utils", "user-notify", "watchdog_adjust", { priority = 40 })
 Install("turris-diagnostics", { priority = 40 })
+Install("turris-diagnostics-web", { priority = 40 })
 Install("rainbow", { priority = 40 })
 if board == "mox" then
 	Install("mox-otp", { priority = 40 })
@@ -81,6 +82,7 @@ elseif board == "turris1x" then
 end
 if board ~= "turris1x" then
 	Install("schnapps", { priority = 40 })
+	Install("turris-snapshots-web", { priority = 40 })
 end
 
 

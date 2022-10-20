@@ -10,6 +10,7 @@ local reforis_optional_plugins = {
 	["netmetr"] = "netmetr",
 	["openvpn"] = "openvpn",
 	["snapshots"] = "schnapps",
+	["nextcloud"] = "nextcloud",
 }
 
 ----------------------------------------------------------------------------------

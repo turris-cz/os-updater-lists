@@ -253,6 +253,13 @@ if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
         Install("fix-firewall-check-reboot")
 end
 
+-- Make sure we have kernel installed on Turris 1.X
+-- When migrating from 5.X to 6.X there seems to be cases when kernel doesn't
+-- get installed. To be sure, run fix script that ensures it. Better safe then sorry.
+if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
+        Install("fix-turris1x-kernel-install")
+end
+
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream
 -- did not take in mind provides, so users could get cryptic message
 -- that some packages are not available

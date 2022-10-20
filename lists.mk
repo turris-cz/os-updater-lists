@@ -1,7 +1,8 @@
 ENTRY_LISTS := \
 	base-min base base-netboot \
 	bootstrap \
-	migrate3x
+	migrate3x \
+	migrate5x
 LISTS := \
 	$(ENTRY_LISTS) \
 	base-fix base-conditional repository \

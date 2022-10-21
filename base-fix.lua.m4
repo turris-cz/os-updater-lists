@@ -209,46 +209,46 @@ end
 -- The Turris 1.x SD card controller gets sometimes switched to read only mode
 -- and there was previously nothing to switch it back. This fix adds such
 -- command to the boot command (U-Boot) that is executed on every bootup.
-if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<6.0.0") then
+if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<6.0") then
 	Install("fix-turris1x-btrfs-sdcard")
 	Package("fix-turris1x-btrfs-sdcard", { replan = "finished" })
 end
 
 -- OpenWrt 21.02 introduced limit for 11 characters for firewall zone
 -- This fix package trims all zone names to 11 characters.
-if os_release.VERSION and version_match(os_release.VERSION, "<6.0.0") then
+if os_release.VERSION and version_match(os_release.VERSION, "<6.0") then
 	Install("fix-firewall-zone-limit")
 	Package("fix-firewall-zone-limit", { replan = "finished" })
 end
 
 -- OpenWrt 21.02 introduced the new way for configuring network devices.
 -- They can configure L2 and L3 layers separately
-if os_release.VERSION and version_match(os_release.VERSION, "<6.0.0") then
+if os_release.VERSION and version_match(os_release.VERSION, "<6.0") then
 	Install("fix-network-devices")
 	Package("fix-network-devices", { replan = "finished" })
 end
 
 -- Since OpenWrt 21.02 mosquitto runs under own user
 -- We need to change ownership of existing files to have it working for reForis Access plugin
-if os_release.VERSION and version_match(os_release.VERSION, "<6.0.0") then
+if os_release.VERSION and version_match(os_release.VERSION, "<6.0") then
         Install("fix-remote-access-ca-permissions")
         Package("fix-remote-access-ca-permissions", { replan = "finished" })
 end
 
 -- LEDs migration from old downstream solution to upstream solution
-if board == "omnia" and os_release.VERSION and version_match(os_release.VERSION, "<6.0.0") then
+if board == "omnia" and os_release.VERSION and version_match(os_release.VERSION, "<6.0") then
         Install("fix-omnia-leds-migrate")
         Package("fix-omnia-leds-migrate", { replan = "finished" })
 end
 
-if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<6.0.0") then
+if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<6.0") then
         Install("fix-turris1x-leds-migrate")
         Package("fix-turris1x-leds-migrate", { replan = "finished" })
 end
 
 -- Make sure we prevent input connections if wan ruleset disappears
 -- We also make router reboot as it seems that there might be a lot of broken after TOS 6.0 update
-if os_release.VERSION and version_match(os_release.VERSION, "<6.0.0") then
+if os_release.VERSION and version_match(os_release.VERSION, "<6.0") then
         Install("fix-firewall-doublesafe")
         Install("fix-firewall-check-reboot")
 end
@@ -256,7 +256,7 @@ end
 -- Make sure we have kernel installed on Turris 1.X
 -- When migrating from 5.X to 6.X there seems to be cases when kernel doesn't
 -- get installed. To be sure, run fix script that ensures it. Better safe then sorry.
-if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
+if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSION, "<6.0.1") then
         Install("fix-turris1x-kernel-install")
 end
 
@@ -264,7 +264,5 @@ end
 -- did not take in mind provides, so users could get cryptic message
 -- that some packages are not available
 
-if os_release.VERSION and version_match(os_release.VERSION, "<=6.0.0") then
-	list_script('migrate5x.lua')
-end
+list_script('migrate5x.lua')
 

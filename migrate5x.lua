@@ -8,8 +8,6 @@ Package("kcptun-s", { virtual=true, deps = "kcptun-server" })
 Package("usbreset", { virtual=true, deps = "usbutils" })
 
 Package("wireguard", { virtual=true, deps = { "kmod-wireguard", "wireguard-tools" }})
-Package("ath10k-firmware-qca9887-ct-htt", { virtual=true, deps = { "ath10k-firmware-qca9887-ct-full-htt" }})
-Package("ath10k-firmware-qca9888-ct-htt", { virtual=true, deps = { "ath10k-firmware-qca9888-ct-full-htt" }})
 Package("foris", { virtual = true })
 
 Package("kmod-bluetooth_6lowpan", { virtual=true, deps = { "kmod-bluetooth-6lowpan" }})

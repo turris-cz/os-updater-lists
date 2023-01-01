@@ -5,6 +5,7 @@ local webapps = {
 	["luci"] = "luci-base",
 	["netdata"] = "netdata",
 	["nextcloud"] = "nextcloud",
+	["syncthing"] = "syncthing",
 	["transmission"] = "transmission-web",
 	["tvheadend"] = "tvheadend",
 }

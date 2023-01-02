@@ -13,6 +13,7 @@ PKGLISTS += \
 	net_monitoring \
 	nextcloud \
 	openvpn \
+	syncthing \
 	tor
 
 

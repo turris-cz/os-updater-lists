@@ -74,7 +74,7 @@ local luci_apps = {
 	"vnstat",
 	"vnstat2",
 	"vpnbypass",
-	"vpn-policy-routing",
+	"pbr",
 	"watchcat",
 	"wifischedule",
 	"wireguard",

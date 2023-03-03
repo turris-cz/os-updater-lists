@@ -260,6 +260,14 @@ if board == "turris1x" and os_release.VERSION and version_match(os_release.VERSI
         Install("fix-turris1x-kernel-install")
 end
 
+-- Make sure guest network bridge name is always br-guest-turris
+-- Since TOS 6.0, preferred name for guest network bridge is 'br-guest-turris' and foris-controller
+-- already uses that name on update of guest network. But there can be older value as leftover from
+-- migration from TOS 5 to TOS 6 ('br-guest_turris').
+if os_release.VERSION and version_match(os_release.VERSION, "<6.3") then
+        Install("fix-guest-network-device-name")
+end
+
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream
 -- did not take in mind provides, so users could get cryptic message
 -- that some packages are not available

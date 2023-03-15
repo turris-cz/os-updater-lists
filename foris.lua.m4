@@ -8,6 +8,7 @@ local reforis_optional_plugins = {
 	["diagnostics"] = "turris-diagnostics",
 	["netboot"] = "turris-netboot-tools",
 	["netmetr"] = "netmetr",
+	["librespeed"] = "librespeed",
 	["openvpn"] = "openvpn",
 	["snapshots"] = "schnapps",
 	["nextcloud"] = "nextcloud",

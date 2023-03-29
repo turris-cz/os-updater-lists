@@ -7,7 +7,7 @@ end
 
 -- netmetr was an old speed measuring service, since Turris OS 6.3.0 we are using
 -- librespeed instead
-if options and (options.librespeed or options.netmetr) then
+if options and (options.librespeed or (options.netmetr and board ~= "turris1x")) then
 	Install("librespeed-cli", { priority = 40 })
 end
 

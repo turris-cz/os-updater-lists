@@ -98,6 +98,18 @@ local db = {
 		packages = {"kmod-carl9170"},
 		class = {"wifi"}
 	},
+	{ -- Mediatek Inc. 802.11ac WLAN [MT7612u emulating drivers CD-ROM]
+		vendor = 0x0e8d,
+		product = 0x2870,
+		packages = {"kmod-mt76x02-usb", "kmod-usb-roles", "usb-modeswitch", "kmod-scsi-cdrom"},
+		class = {"wifi"}
+	},
+	{ -- Mediatek Inc. 802.11ac WLAN [MT7612u, after mode switch]
+		vendor = 0x0e8d,
+		product = 0x7612,
+		packages = {"kmod-mt76x02-usb", "kmod-usb-roles", "usb-modeswitch", "kmod-scsi-cdrom"},
+		class = {"wifi"}
+	},
 	-- Z-Wave --------------------------------------------------------------------
 	{ -- Sigma Designs, Inc. Aeotec Z-Stick Gen5 (ZW090) - UZB
 		vendor = 0x0658,

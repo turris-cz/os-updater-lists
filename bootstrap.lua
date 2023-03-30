@@ -65,7 +65,7 @@ if env_pkglists then
 				options[opt] = true
 			end
 		end
-		Script(list_name .. '.lua')
+		Script('pkglists/' .. list_name .. '.lua')
 	end
 end
 

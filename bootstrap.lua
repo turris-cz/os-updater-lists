@@ -10,8 +10,9 @@ This script expects following variables to be possibly defined in environment:
     package name and list pipe separated options inside them. (ex:
     foo(opt1|opt2),fee)
   BOOTSTRAP_DRIVERS: comamas separated list of driver flags. Every driver class is
-    combination of bus ('usb' or 'pci') and class itself separated by colon (ex:
-    usb:foo,pci:fee). Special class 'all' can be used to include all drivers.
+    combination of bus ('usb', 'pci' or 'sdio') and class itself separated by
+    colon (ex: usb:foo,pci:fee). Special class 'all' can be used to include all
+    drivers.
   BOOTSTRAP_CONTRACT: name of contract medkit is generated for. Do not specify for
     standard medkits
   BOOTSTRAP_TESTKEY: if defined non-empty then test kyes are included in
@@ -74,12 +75,15 @@ local env_devices = os.getenv('BOOTSTRAP_DRIVERS')
 if env_devices then
 	local usb_devices = {}
 	local pci_devices = {}
+	local sdio_devices = {}
 	for device in env_devices:gmatch('[^,]+') do
 		local tp, class = device:match('([^:]+):(.*)')
 		if tp == "usb" then
 			table.insert(usb_devices, class)
 		elseif tp == "pci" then
 			table.insert(pci_devices, class)
+		elseif tp == "sdio" then
+			table.insert(sdio_devices, class)
 		else
 			WARN("Invalid device type, ignoring: " .. device)
 		end
@@ -89,6 +93,8 @@ if env_devices then
 	Script('drivers/usb.lua')
 	devices = pci_devices
 	Script('drivers/pci.lua')
+	devices = sdio_devices
+	Script('drivers/sdio.lua')
 	Unexport('drivers')
 end
 

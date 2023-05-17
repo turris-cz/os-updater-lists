@@ -65,19 +65,19 @@ local db = {
 		vendor = 0x05c6,
 		product = 0x9215,
 		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-qualcomm"},
-		class = {"broadband"}
+		class = {"lte"}
 	},
 	{ -- Huawei Technologies Co., Ltd. K5150 LTE modem
 		vendor = 0x12d1,
 		product = 0x1f16,
 		packages = {"comgt-ncm", "umbim", "kmod-usb-net-cdc-ether"},
-		class = {"broadband"}
+		class = {"lte"}
 	},
 	{ -- TCL Communication Ltd Alcatel OneTouch L850V / Telekom Speedstick LTE
 		vendor = 0x1bbb,
 		product = 0x0195,
 		packages = {"kmod-usb-net-rndis"},
-		class = {"broadband"}
+		class = {"lte"}
 	},
 	-- WiFi dongles --------------------------------------------------------------
 	{ -- Realtek Semiconductor Corp. RTL8812AU 802.11a/b/g/n/ac 2T2R DB WLAN Adapter

@@ -79,6 +79,24 @@ local db = {
 		packages = {"kmod-usb-net-rndis"},
 		class = {"lte"}
 	},
+	{ -- Neoway N75-EA
+		vendor = 0x2949,
+		product = 0x8247,
+		packages = {"kmod-usb-serial-option"},
+		class = {"lte"}
+	},
+	{ -- Quectel EP-06
+		vendor = 0x2c7c,
+		product = 0x0306,
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-option"},
+		class = {"lte"}
+	},
+	{ -- Sierra Wireless WP7606
+		vendor = 0x1199,
+		product = 0x68c0,
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-qualcomm"},
+		class = {"lte"}
+	},
 	-- WiFi dongles --------------------------------------------------------------
 	{ -- Realtek Semiconductor Corp. RTL8812AU 802.11a/b/g/n/ac 2T2R DB WLAN Adapter
 		vendor = 0x0bda,

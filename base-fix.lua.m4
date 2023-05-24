@@ -268,6 +268,13 @@ if os_release.VERSION and version_match(os_release.VERSION, "<6.3") then
         Install("fix-guest-network-device-name")
 end
 
+-- Make sure rainbow-button-sync service is enabled.
+-- It was disabled by default since migration to rainbow-ng and broken at first, now it is working
+-- but only disabled.
+if os_release.VERSION and version_match(os_release.VERSION, "<6.3.3") and version_match(os_release.VERSION, ">6.0") then
+        Install("fix-rainbow-button-sync-enable")
+end
+
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream
 -- did not take in mind provides, so users could get cryptic message
 -- that some packages are not available

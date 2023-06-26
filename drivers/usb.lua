@@ -65,19 +65,37 @@ local db = {
 		vendor = 0x05c6,
 		product = 0x9215,
 		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-qualcomm"},
-		class = {"broadband"}
+		class = {"lte"}
 	},
 	{ -- Huawei Technologies Co., Ltd. K5150 LTE modem
 		vendor = 0x12d1,
 		product = 0x1f16,
 		packages = {"comgt-ncm", "umbim", "kmod-usb-net-cdc-ether"},
-		class = {"broadband"}
+		class = {"lte"}
 	},
 	{ -- TCL Communication Ltd Alcatel OneTouch L850V / Telekom Speedstick LTE
 		vendor = 0x1bbb,
 		product = 0x0195,
 		packages = {"kmod-usb-net-rndis"},
-		class = {"broadband"}
+		class = {"lte"}
+	},
+	{ -- Neoway N75-EA
+		vendor = 0x2949,
+		product = 0x8247,
+		packages = {"kmod-usb-serial-option"},
+		class = {"lte"}
+	},
+	{ -- Quectel EP-06
+		vendor = 0x2c7c,
+		product = 0x0306,
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-option"},
+		class = {"lte"}
+	},
+	{ -- Sierra Wireless WP7606
+		vendor = 0x1199,
+		product = 0x68c0,
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-qualcomm"},
+		class = {"lte"}
 	},
 	-- WiFi dongles --------------------------------------------------------------
 	{ -- Realtek Semiconductor Corp. RTL8812AU 802.11a/b/g/n/ac 2T2R DB WLAN Adapter

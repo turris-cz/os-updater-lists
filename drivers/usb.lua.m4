@@ -19,6 +19,9 @@ devices in database. Other option is table where keys are "vendor" and "product"
 Values of those fields are compared with values in database and if they match then
 appropriate packages are requested.
 ]]
+
+include(utils.m4)dnl
+
 local db = {
 	-- Audio Adapters -----------------------------------------------------------
 	{ -- C-Media Electronics, Inc. Audio Adapter
@@ -216,9 +219,11 @@ for _, device in pairs(devices) do
 			for _, package in pairs(dbdev.packages) do
 				Install(package, { priority = 40 })
 			end
-			classes[dbdev.class] = true
+			for cl, _ in pairs(dbdev.class) do
+			    classes[cl] = true
+            end
 		end
 	end
 end
 
-turris_list("drivers/classes.lua")
+list_script("classes.lua")

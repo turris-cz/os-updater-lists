@@ -18,7 +18,7 @@ local db = {
 		class = "dvb",
 		packages = { "tvheadend", "turris-webapps-tvheadend" }
 	},
-	-- Bletooth
+	-- Bluetooth
 	{
 		class = "bluetooth",
 		packages = { "bluez-daemon", "bluez-utils" }

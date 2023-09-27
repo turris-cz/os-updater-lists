@@ -8,9 +8,9 @@ the classes, that are present. Value is always set to 1.
 ]]
 
 local db = {
-	-- LTE modems
+	-- 3/4/5G modems
 	{
-		class = "lte",
+		class = "gsm",
 		packages = { "modemmanager", "luci-app-mwan3", "luci-proto-modemmanager", "pptpd" }
 	},
 	-- DVB tunners

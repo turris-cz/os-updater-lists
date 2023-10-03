@@ -11,7 +11,14 @@ local db = {
 	-- 3/4/5G modems
 	{
 		class = "gsm",
-		packages = { "modemmanager", "luci-app-mwan3", "luci-proto-modemmanager", "pptpd" }
+		packages = {
+			"mwan3",
+			"luci-app-mwan3",
+			"modemmanager",
+			"luci-proto-modemmanager",
+			"modem-manager-autosetup",
+			"pptpd"
+		}
 	},
 	-- DVB tunners
 	{

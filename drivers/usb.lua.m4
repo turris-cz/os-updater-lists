@@ -106,6 +106,12 @@ local db = {
 		packages = {"kmod-usb-net-cdc-ncm", "kmod-usb-serial-option"},
 		class = {"gsm"}
 	},
+	{ -- Huawei E3531
+		vendor = 0x12d1,
+		product = 0x14dc,
+		packages = {"kmod-usb-net-cdc-ether", "usb-modeswitch"},
+		class = {"gsm"}
+	},
 	-- WiFi dongles --------------------------------------------------------------
 	{ -- Realtek Semiconductor Corp. RTL8812AU 802.11a/b/g/n/ac 2T2R DB WLAN Adapter
 		vendor = 0x0bda,

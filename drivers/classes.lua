@@ -33,10 +33,12 @@ local db = {
 }
 
 for _, entry in pairs(db) do
-	for class, _ in pairs(classes) do
-		if class == entry.class then
-			for _, package in pairs(entry.packages) do
-				Install(package, { priority = 40 })
+	if classes then
+		for class, _ in pairs(classes) do
+			if class == entry.class then
+				for _, package in pairs(entry.packages) do
+					Install(package, { priority = 40 })
+				end
 			end
 		end
 	end

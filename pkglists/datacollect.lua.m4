@@ -7,10 +7,14 @@ end
 
 if not options or options.dynfw ~= false then
 	if options and options.dynfw_new then
-		Install("sentinel-dynfw-c-client-iptables", { priority = 40 })
+		Install("sentinel-dynfw-c-client-iptables", { priority = 42 })
 	else
 		Install("sentinel-dynfw-client", { priority = 40 })
 	end
+end
+
+if not options or options.dynfw_new ~= false then
+	Install("sentinel-dynfw-c-client-iptables", { priority = 42 })
 end
 
 if not options or options.fwlogs ~= false then

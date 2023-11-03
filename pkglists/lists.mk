@@ -12,6 +12,7 @@ PKGLISTS += \
 	netdata \
 	net_monitoring \
 	nextcloud \
+	firmware_update \
 	openvpn \
 	syncthing \
 	tor

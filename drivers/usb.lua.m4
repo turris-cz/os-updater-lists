@@ -112,6 +112,12 @@ local db = {
 		packages = {"kmod-usb-net-cdc-ether", "usb-modeswitch"},
 		class = {"gsm"}
 	},
+	{ -- SIMCOM SDXNIGHTJAR-MTP
+		vendor = 0x1e0e,
+		product = 0x9001,
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-option"},
+		class = {"gsm"}
+	},
 	-- WiFi dongles --------------------------------------------------------------
 	{ -- Realtek Semiconductor Corp. RTL8812AU 802.11a/b/g/n/ac 2T2R DB WLAN Adapter
 		vendor = 0x0bda,

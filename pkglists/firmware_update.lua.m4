@@ -9,7 +9,7 @@ if not options or options.nor ~= false then
 	Install("turris-nor-update", { priority = 40 })
 end
 if not options or options.mcu ~= false then
-	Install("omnia-mcu-tool", { priority = 40 })
+	Install("omnia-mcutool", { priority = 40 })
 	Install("omnia-mcu-firmware", { priority = 40 })
 end
 if not options or options.factory ~= false then

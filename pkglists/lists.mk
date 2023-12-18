@@ -5,6 +5,7 @@ PKGLISTS += \
 	drivers \
 	dvb \
 	hardening \
+	kresd6 \
 	luci_controls \
 	lxc \
 	nas \

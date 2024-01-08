@@ -1,7 +1,8 @@
 DRIVERS += \
 	pci \
 	sdio \
-	usb
+	usb \
+	classes
 
 
 LISTS += $(patsubst %,drivers/%,$(DRIVERS))

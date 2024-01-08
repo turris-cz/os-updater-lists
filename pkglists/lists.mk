@@ -5,6 +5,7 @@ PKGLISTS += \
 	drivers \
 	dvb \
 	hardening \
+	kresd6 \
 	luci_controls \
 	lxc \
 	nas \
@@ -12,6 +13,7 @@ PKGLISTS += \
 	netdata \
 	net_monitoring \
 	nextcloud \
+	firmware_update \
 	openvpn \
 	syncthing \
 	tor

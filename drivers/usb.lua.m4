@@ -19,6 +19,9 @@ devices in database. Other option is table where keys are "vendor" and "product"
 Values of those fields are compared with values in database and if they match then
 appropriate packages are requested.
 ]]
+
+include(utils.m4)dnl
+
 local db = {
 	-- Audio Adapters -----------------------------------------------------------
 	{ -- C-Media Electronics, Inc. Audio Adapter
@@ -65,37 +68,55 @@ local db = {
 		vendor = 0x05c6,
 		product = 0x9215,
 		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-qualcomm"},
-		class = {"lte"}
+		class = {"gsm"}
 	},
 	{ -- Huawei Technologies Co., Ltd. K5150 LTE modem
 		vendor = 0x12d1,
 		product = 0x1f16,
 		packages = {"comgt-ncm", "umbim", "kmod-usb-net-cdc-ether"},
-		class = {"lte"}
+		class = {"gsm"}
 	},
 	{ -- TCL Communication Ltd Alcatel OneTouch L850V / Telekom Speedstick LTE
 		vendor = 0x1bbb,
 		product = 0x0195,
 		packages = {"kmod-usb-net-rndis"},
-		class = {"lte"}
+		class = {"gsm"}
 	},
 	{ -- Neoway N75-EA
 		vendor = 0x2949,
 		product = 0x8247,
 		packages = {"kmod-usb-serial-option"},
-		class = {"lte"}
+		class = {"gsm"}
 	},
 	{ -- Quectel EP-06
 		vendor = 0x2c7c,
 		product = 0x0306,
 		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-option"},
-		class = {"lte"}
+		class = {"gsm"}
 	},
 	{ -- Sierra Wireless WP7606
 		vendor = 0x1199,
 		product = 0x68c0,
 		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-qualcomm"},
-		class = {"lte"}
+		class = {"gsm"}
+	},
+	{ -- Quectel RM500U-EA
+		vendor = 0x2c7c,
+		product = 0x0900,
+		packages = {"kmod-usb-net-cdc-ncm", "kmod-usb-serial-option"},
+		class = {"gsm"}
+	},
+	{ -- Huawei E3531
+		vendor = 0x12d1,
+		product = 0x14dc,
+		packages = {"kmod-usb-net-cdc-ether", "usb-modeswitch"},
+		class = {"gsm"}
+	},
+	{ -- SIMCOM SDXNIGHTJAR-MTP
+		vendor = 0x1e0e,
+		product = 0x9001,
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-option"},
+		class = {"gsm"}
 	},
 	-- WiFi dongles --------------------------------------------------------------
 	{ -- Realtek Semiconductor Corp. RTL8812AU 802.11a/b/g/n/ac 2T2R DB WLAN Adapter
@@ -198,14 +219,23 @@ for _, dbdev in pairs(db) do
 	dbdev.class = class_set
 end
 
--- Now request packages for requested devices
+-- Now request packages for requested devices and collect a list of found classes
+classes = {}
+Export("classes")
+
 for _, device in pairs(devices) do
 	for _, dbdev in pairs(db) do
+		-- Device can be either table of devices (with product and vendor) or string "all" or string describing class
 		if (type(device) == "string" and (device == "all" or dbdev.class[device])) or
 				(type(device) == "table" and device.vendor == dbdev.vendor and device.product == dbdev.product) then
 			for _, package in pairs(dbdev.packages) do
 				Install(package, { priority = 40 })
 			end
+			for cl, _ in pairs(dbdev.class) do
+			    classes[cl] = true
+            end
 		end
 	end
 end
+
+list_script("classes.lua")

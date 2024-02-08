@@ -1,10 +1,6 @@
 include(utils.m4)dnl
 _FEATURE_GUARD_
 
-if options and options.netmetr then
-	Install("netmetr", { priority = 40 })
-end
-
 -- netmetr was an old speed measuring service, since Turris OS 6.3.0 we are using
 -- librespeed instead
 if options and (options.librespeed or (options.netmetr and board ~= "turris1x")) then

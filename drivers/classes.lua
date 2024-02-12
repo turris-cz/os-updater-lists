@@ -17,6 +17,7 @@ local db = {
 			"modemmanager",
 			"luci-proto-modemmanager",
 			"modem-manager-autosetup",
+			"foris-controller-lte-module",
 			"pptpd"
 		}
 	},

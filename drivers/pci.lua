@@ -27,10 +27,10 @@ local db = {
 		packages = {"kmod-ath10k", "ath10k-firmware-qca988x"}
 	},
 	{ -- Qualcomm Atheros QCA9984 802.11ac Wave 2 Wireless Network Adapter
-                vendor = 0x168c,
-                device = 0x0046,
-                packages = {"kmod-ath10k", "ath10k-firmware-qca9984"}
-        },
+		vendor = 0x168c,
+		device = 0x0046,
+		packages = {"kmod-ath10k", "ath10k-firmware-qca9984"}
+	},
 	{ -- MEDIATEK Corp. Device 7612
 		vendor = 0x14c3,
 		device = 0x7612,
@@ -40,6 +40,11 @@ local db = {
 		vendor = 0x14c3,
 		device = 0x7915,
 		packages = {"kmod-mt7915e"}
+	},
+	{ -- MEDIATEK Corp. MT7916 Wi-Fi 6E PCI Express Wireless Network Adapter
+		vendor = 0x14c3,
+		device = 0x7906,
+		packages = {"kmod-mt7915e", "kmod-mt7916-firmware"}
 	},
 	{ -- MEDIATEK Corp. Device 7615
 		device = 0x7615,

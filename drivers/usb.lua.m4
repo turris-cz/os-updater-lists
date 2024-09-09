@@ -103,8 +103,7 @@ local db = {
 	{ -- Quectel RM500U-EA
 		vendor = 0x2c7c,
 		product = 0x0900,
-		packages = {"kmod-usb-net-cdc-ncm", "kmod-usb-serial-option"},
-		class = {"gsm"}
+		packages = {"kmod-usb-net-cdc-ncm", "kmod-usb-serial-option", "omnia-5g-kit"},
 	},
 	{ -- Huawei E3531
 		vendor = 0x12d1,

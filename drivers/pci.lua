@@ -39,7 +39,7 @@ local db = {
 	{ -- MEDIATEK Corp. MT7915E 802.11ax PCI Express Wireless Network Adapter
 		vendor = 0x14c3,
 		device = 0x7915,
-		packages = {"kmod-mt7915e"}
+		packages = {"kmod-mt7915e", "kmod-mt7915-firmware"}
 	},
 	{ -- MEDIATEK Corp. MT7916 Wi-Fi 6E PCI Express Wireless Network Adapter
 		vendor = 0x14c3,

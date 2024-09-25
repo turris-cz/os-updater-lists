@@ -1,5 +1,6 @@
 PKGLISTS += \
 	3g \
+	5g-kit \
 	atlas \
 	datacollect \
 	drivers \

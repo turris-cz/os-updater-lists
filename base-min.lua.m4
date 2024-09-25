@@ -23,7 +23,7 @@ Install("fstools", { critical = true })
 
 -- Critical minimum
 Install("base-files", "busybox", "procd", "ubus", "uci", { critical = true })
-Install("netifd", "firewall", "dns-resolver", { critical = true})
+Install("netifd", "firewall4", "dns-resolver", { critical = true})
 
 -- OpenWrt minimum
 Install("ebtables", "dnsmasq-full", "odhcpd", "odhcp6c", { priority = 40 })
@@ -53,7 +53,7 @@ _FEATURE_GUARD_
 -- Network tools
 Install("ip-full", "tc", "genl", "ip-bridge", "ss", "nstat", "devlink", "rdma", { priority = 40 })
 Install("iputils-ping", "iputils-tracepath", { priority = 40 })
-Install("iptables", "ip6tables", "conntrack", { priority = 40 })
+Install("nftables-json", "conntrack", { priority = 40 })
 Install("bind-client", "bind-dig", { priority = 40 })
 Install("umdns", { priority = 40 })
 

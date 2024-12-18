@@ -275,6 +275,13 @@ if os_release.VERSION and version_match(os_release.VERSION, "<6.3.3") and versio
         Install("fix-rainbow-button-sync-enable")
 end
 
+-- Make sure that nftables versions of packages are installed when switched to nftables
+-- In TOS 7.1 we switched from iptables to nftables. This makes sure that correct versions of
+-- packages are installed.
+if os_release.VERSION and version_match(os_release.VERSION, "<7.1.3") then
+        Install("fix-iptables-to-nftables-packages")
+end
+
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream
 -- did not take in mind provides, so users could get cryptic message
 -- that some packages are not available

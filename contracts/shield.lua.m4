@@ -30,7 +30,6 @@ Unexport("options")
 
 -- Extra software
 options = {
-	["netmetr"] = true,
 	["librespeed"] = true,
 	["dev_detect"] = true,
 }

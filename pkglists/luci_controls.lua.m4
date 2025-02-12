@@ -36,7 +36,7 @@ if options and options.statistics then
 end
 
 if options and options.wireguard then
-        Install("luci-app-wireguard", { priority = 40 })
+        Install("luci-proto-wireguard", { priority = 40 })
 end
 
 if options and options.easybird then

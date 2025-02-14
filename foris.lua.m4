@@ -7,7 +7,6 @@ local reforis_optional_plugins = {
 	["haas"] = "haas-proxy",
 	["diagnostics"] = "turris-diagnostics",
 	["netboot"] = "turris-netboot-tools",
-	["netmetr"] = "netmetr",
 	["librespeed"] = "librespeed-cli",
 	["openvpn"] = "openvpn",
 	["snapshots"] = "schnapps",

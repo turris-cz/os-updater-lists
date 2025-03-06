@@ -6,7 +6,7 @@ if board == "omnia" or board == "turris1x" then
 end
 
 -- Additional protocols
-forInstall(luci-app,ahcp,bcp38)
+Install("luci-app-bcp38", { priority = 40 })
 Install("luci-proto-relay", { priority = 40 })
 
 

@@ -6,7 +6,6 @@ local luci_apps = {
 	"acme",
 	"adblock",
 	"advanced-reboot",
-	"ahcp",
 	"aria2",
 	"attendedsysupgrade",
 	"banip",

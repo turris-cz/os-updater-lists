@@ -18,6 +18,7 @@ local db = {
 			"luci-proto-modemmanager",
 			"modem-manager-autosetup",
 			"foris-controller-lte-module",
+			"reforis-gsm-plugin",
 			"pptpd"
 		}
 	},

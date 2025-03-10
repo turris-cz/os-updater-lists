@@ -88,6 +88,18 @@ local db = {
 		packages = {"kmod-usb-serial-option"},
 		class = {"gsm"}
 	},
+	{ -- Quectel EC-20
+		vendor = 0x05c6,
+		product = 0x9215,
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-option"},
+		class = {"gsm"}
+	},
+	{ -- Quectel EC-25
+		vendor = 0x2c7c,
+		product = 0x0125,
+		packages = {"kmod-usb-net-qmi-wwan", "kmod-usb-serial-option"},
+		class = {"gsm"}
+	},
 	{ -- Quectel EP-06
 		vendor = 0x2c7c,
 		product = 0x0306,

@@ -3,7 +3,7 @@ _FEATURE_GUARD_
 
 -- These are reForis plugins to be installed as extension for specific other package
 local reforis_optional_plugins = {
-	["data-collection"] = "sentinel-proxy",
+	["sentinel"] = "sentinel-proxy",
 	["haas"] = "haas-proxy",
 	["diagnostics"] = "turris-diagnostics",
 	["netboot"] = "turris-netboot-tools",

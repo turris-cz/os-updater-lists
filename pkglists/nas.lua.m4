@@ -50,6 +50,7 @@ if options and options.transmission then
 	Install("transmission-daemon", { priority = 40 })
 	Install("luci-app-transmission", { priority = 40 })
 	Install("transmission-web", { priority = 40 })
+	Install("procd-ujail", { priority = 40 })
 end
 
 -- Raid --

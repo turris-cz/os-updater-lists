@@ -282,6 +282,13 @@ if os_release.VERSION and version_match(os_release.VERSION, "<7.1.3") then
         Install("fix-iptables-to-nftables-packages")
 end
 
+-- Make sure that LibreSpeed config is preserver during update
+-- This package has to be installed before foris-controller-librespeed is updated
+if os_release.VERSION and version_match(os_release.VERSION, "<7.1.4") then
+        Package("foris-controller-librespeed-module", { deps = "fix-preserve-librespeed-config" })
+end
+
+
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream
 -- did not take in mind provides, so users could get cryptic message
 -- that some packages are not available

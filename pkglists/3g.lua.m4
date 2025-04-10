@@ -12,6 +12,6 @@ Install("modemmanager", {priority = 40 })
 Install("luci-proto-3g", "luci-proto-qmi", "luci-proto-modemmanager", { priority = 40 })
 
 -- Foris
-Install("foris-controller-lte-module", { priority = 40 })
+Install("foris-controller-lte-module", "reforis-gsm-plugin", { priority = 40 })
 
 _END_FEATURE_GUARD_

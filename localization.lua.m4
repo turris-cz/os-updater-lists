@@ -15,7 +15,7 @@ end
 
 -- reForis
 for_l10n("reforis")
-for_l10n("reforis-data-collection-plugin")
+for_l10n("reforis-sentinel-plugin")
 for_l10n("reforis-haas-plugin")
 for_l10n("reforis-diagnostics-plugin")
 for_l10n("reforis-netboot-plugin")

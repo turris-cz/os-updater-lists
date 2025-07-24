@@ -36,6 +36,18 @@ local db = {
 		packages = {"kmod-usb-audio"},
 		class = {"audio"}
 	},
+	{ -- C-Media Electronics Inc. USB Audio Device
+		vendor = 0x0d8c,
+		product = 0x0014,
+		packages = {"kmod-usb-audio"},
+		class = {"audio"}
+	},
+	{ -- C-Media Electronics Inc.       USB PnP Sound Device
+		vendor = 0x8086,
+		product = 0x0808,
+		packages = {"kmod-usb-audio"},
+		class = {"audio"}
+	},
 	-- DVB tunners ---------------------------------------------------------------
 	{ -- TechnoTrend AG TT-connect CT-3650 CI
 		vendor = 0x0b48,

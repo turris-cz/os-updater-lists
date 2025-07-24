@@ -16,7 +16,7 @@ Install("htop", "psmisc", "procps-ng-top", "procps-ng-ps", { priority = 40 })
 Install("curl", "wget-ssl", "tcpdump", "rsync", { priority = 40 })
 
 -- Filesystems
-Install("partx-utils", "blkid", "lsblk", { priority = 40 })
+Install("partx-utils", "blkid", "lsblk", "fdisk", { priority = 40 })
 
 -- SSH Clients additions
 Install("openssh-client", "openssh-client-utils", "openssh-sftp-client", { priority = 40 })

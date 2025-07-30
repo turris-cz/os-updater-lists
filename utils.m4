@@ -41,8 +41,10 @@ if not board then
 	local model = model or os_release["OPENWRT_DEVICE_PRODUCT"] or os_release["LEDE_DEVICE_PRODUCT"]
 	if model:match("[Mm]ox") then
 		board = "mox"
-	elseif model:match("[Oo]mnia") then
+	elseif model:match("^[Oo]mnia$") then
 		board = "omnia"
+	elseif model:match("^[Oo]mnia.[Nn][Gg]$") then
+		board = "omnia-ng"
 	elseif model:match("^[Tt]urris$") or model:match("[Tt]urris ?1%.?x") then
 		board = "turris1x"
 	else

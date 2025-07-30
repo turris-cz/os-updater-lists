@@ -1,3 +1,8 @@
+# Wi-Fi drivers
+ath9k
+ath10k
+mt7915e
+
 # Turris Omnia specific drivers
 usb-serial-qualcomm
 gpio-pca953x

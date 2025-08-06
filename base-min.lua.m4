@@ -13,6 +13,7 @@ if board == "mox" then
 	Install("mox-support", { critical = true })
 	Install("zram-swap", { priority = 40 })
 elseif board == "omnia-ng" then
+	forInstallCritical(kmod,file2args(kmod-omnia-ng.list))
 	Install("omnia-ng-support", { critical = true })
 elseif board == "omnia" then
 	forInstallCritical(kmod,file2args(kmod-omnia.list))

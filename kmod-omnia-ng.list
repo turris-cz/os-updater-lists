@@ -1,0 +1,6 @@
+# Turris Omnia NG specific drivers
+qca-nss-drv-lite
+input-gpio-keys
+input-evdev
+qca8084
+qca8xxx-phc

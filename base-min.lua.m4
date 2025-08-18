@@ -95,7 +95,7 @@ Install("hostapd-common", "wireless-tools", "wpad-openssl", "iw", "iwinfo", { pr
 if board == "mox" then
 	Install("kmod-ath10k-ct", { priority = 40 })
 	Install("mwifiex-sdio-firmware", "ath10k-firmware-qca988x-ct", { priority = 40 })
-else
+elseif board ~= "omnia-ng" then
 	Install("ath10k-firmware-qca988x", { priority = 40 })
 end
 

@@ -6,7 +6,7 @@ if board == "omnia" or board == "turris1x" then
 end
 
 -- Additional protocols
-forInstall(luci-app,ahcp,bcp38)
+Install("luci-app-bcp38", { priority = 40 })
 Install("luci-proto-relay", { priority = 40 })
 
 
@@ -36,7 +36,7 @@ if options and options.statistics then
 end
 
 if options and options.wireguard then
-        Install("luci-app-wireguard", { priority = 40 })
+        Install("luci-proto-wireguard", { priority = 40 })
 end
 
 if options and options.easybird then

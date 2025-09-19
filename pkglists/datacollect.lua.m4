@@ -21,4 +21,8 @@ if options and options.haas then
 	Install("haas-proxy", { priority = 40 })
 end
 
+if options and options.haas_new then
+	Install("sshoxy-haas", { priority = 40 })
+end
+
 _END_FEATURE_GUARD_

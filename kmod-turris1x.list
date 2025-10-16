@@ -1,3 +1,6 @@
+# Wi-Fi drivers
+ath9k
+
 # Turris 1.x specific drivers
 button-hotplug
 hwmon-lm90

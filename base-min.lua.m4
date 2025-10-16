@@ -12,6 +12,11 @@ if board == "mox" then
 	forInstallCritical(kmod,file2args(kmod-mox.list))
 	Install("mox-support", { critical = true })
 	Install("zram-swap", { priority = 40 })
+elseif board == "omnia-ng" then
+	forInstallCritical(kmod,file2args(kmod-omnia-ng.list))
+	Install("omnia-ng-support", { critical = true })
+	Install("peacockr", { priority = 40 })
+	Install("turris-omnia-ng-wifi-firmware", { critical = true })
 elseif board == "omnia" then
 	forInstallCritical(kmod,file2args(kmod-omnia.list))
 	Install("omnia-support", { critical = true })
@@ -72,12 +77,13 @@ Install("turris-version", "start-indicator", { priority = 40 })
 Install("turris-utils", "user-notify", "watchdog_adjust", { priority = 40 })
 Install("turris-diagnostics", { priority = 40 })
 Install("turris-diagnostics-web", { priority = 40 })
-Install("rainbow", { priority = 40 })
 if board == "mox" then
 	Install("mox-otp", { priority = 40 })
 elseif board == "omnia" then
+	Install("rainbow", { priority = 40 })
 	Install("libatsha204", { priority = 40 })
 elseif board == "turris1x" then
+	Install("rainbow", { priority = 40 })
 	Install("libatsha204", "update_mac", { priority = 40 })
 end
 if board ~= "turris1x" then
@@ -91,7 +97,7 @@ Install("hostapd-common", "wireless-tools", "wpad-openssl", "iw", "iwinfo", { pr
 if board == "mox" then
 	Install("kmod-ath10k-ct", { priority = 40 })
 	Install("mwifiex-sdio-firmware", "ath10k-firmware-qca988x-ct", { priority = 40 })
-else
+elseif board ~= "omnia-ng" then
 	Install("ath10k-firmware-qca988x", { priority = 40 })
 end
 

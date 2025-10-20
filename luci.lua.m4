@@ -76,7 +76,6 @@ local luci_apps = {
 	"pbr",
 	"watchcat",
 	"wifischedule",
-	"wireguard",
 	"wol",
 	"xinetd",
 	"yggdrasil",

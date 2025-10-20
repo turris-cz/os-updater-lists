@@ -93,7 +93,7 @@ Install("luci-proto-ipv6", "luci-proto-ppp", { priority = 40 })
 Install("resolver-debug", { priority = 40 })
 
 -- Conditional install requests for language packages
-for _, lang in pairs({"en", unpack(l10n or {})}) do
+for _, lang in pairs({unpack(l10n or {})}) do
 	for _, name in pairs(luci_apps) do
 		Install("luci-i18n-" .. name .. "-" .. lang, {
 			priority = 10,

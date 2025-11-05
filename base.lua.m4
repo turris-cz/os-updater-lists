@@ -12,9 +12,4 @@ list_script('terminal-apps.lua')
 list_script('webapps.lua')
 list_script('localization.lua')
 
-
--- OpenWrt package management
-Install("opkg", "libustream-openssl", { priority = 40 })
-Uninstall("wget-nossl", { priority = 40 }) -- opkg required SSL variant only
-
 _END_FEATURE_GUARD_

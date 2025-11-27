@@ -288,6 +288,10 @@ if os_release.VERSION and version_match(os_release.VERSION, "<7.1.4") then
         Package("foris-controller-librespeed-module", { deps = "fix-preserve-librespeed-config" })
 end
 
+-- Migrate default configuration of 6 GHz Wi-Fi to more reasonable configuration
+if board == "omnia-ng" and os_release.VERSION and version_match(os_release.VERSION, "<9.0.2") then
+        Install("fix-wifi7-6ghz" })
+end
 
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream
 -- did not take in mind provides, so users could get cryptic message

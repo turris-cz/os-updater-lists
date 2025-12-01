@@ -116,8 +116,6 @@ Install("luci-mod-dashboard", { priority = 40 })
 
 Install("luci-app-commands", { priority = 40 })
 Install("luci-proto-ipv6", "luci-proto-ppp", { priority = 40 })
--- Install resolver-debug for DNS debuging
-Install("resolver-debug", { priority = 40 })
 
 -- Conditional install requests for language packages
 for _, lang in pairs({unpack(l10n or {})}) do

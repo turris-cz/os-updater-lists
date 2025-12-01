@@ -290,12 +290,12 @@ end
 
 -- Migrate LED triggers to new interface names
 if os_release.VERSION and version_match(os_release.VERSION, "<9.0.1") then
-        Install("fix-leds-wlan-to-phy" })
+        Install("fix-leds-wlan-to-phy")
 end
 
 -- Migrate default configuration of 6 GHz Wi-Fi to more reasonable configuration
 if board == "omnia-ng" and os_release.VERSION and version_match(os_release.VERSION, "<9.0.2") then
-        Install("fix-wifi7-6ghz" })
+        Install("fix-wifi7-6ghz")
 end
 
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream

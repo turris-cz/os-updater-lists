@@ -34,6 +34,10 @@ Install("netifd", "firewall4", "dns-resolver", { critical = true})
 Install("ebtables", "dnsmasq-full", "odhcpd", "odhcp6c", { priority = 40 })
 Install("urandom-seed", { priority = 40 })
 
+-- OpenWrt package management
+Install("opkg", "libustream-openssl", { priority = 40 })
+Uninstall("wget-nossl", { priority = 40 }) -- opkg required SSL variant only
+
 -- Turris minimum
 Install("turris-defaults", { priority = 40 })
 Install("cronie", { priority = 40 })

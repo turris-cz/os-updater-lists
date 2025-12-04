@@ -17,9 +17,9 @@ Install("curl", "wget-ssl", "tcpdump", "rsync", { priority = 40 })
 
 -- Filesystems
 Install("partx-utils", "blkid", "lsblk", "fdisk", { priority = 40 })
+Install("kmod-fs-exfat", "kmod-fs-vfat", "kmod-fs-ext4", { priority = 40 })
 
 -- SSH Clients additions
 Install("openssh-client", "openssh-client-utils", "openssh-sftp-client", { priority = 40 })
-
 
 _END_FEATURE_GUARD_

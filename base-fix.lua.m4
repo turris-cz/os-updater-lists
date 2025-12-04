@@ -288,6 +288,22 @@ if os_release.VERSION and version_match(os_release.VERSION, "<7.1.4") then
         Package("foris-controller-librespeed-module", { deps = "fix-preserve-librespeed-config" })
 end
 
+-- Migrate LED triggers to new interface names
+if os_release.VERSION and version_match(os_release.VERSION, "<9.0.1") then
+        Install("fix-leds-wlan-to-phy")
+end
+
+-- Migrate default configuration of 6 GHz Wi-Fi to more reasonable configuration
+if board == "omnia-ng" and os_release.VERSION and version_match(os_release.VERSION, "<9.0.2") then
+        Install("fix-wifi7-6ghz")
+end
+
+-- Make sure that luci-app-wireguard changed to luci-proto-wireguard
+-- The package has been renamed in upstream and if it is not renamed in updater the users get error.
+if os_release.VERSION and version_match(os_release.VERSION, "<9.0.1") then
+        Install("fix-luci-wireguard-app-to-proto", "luci-proto-wireguard")
+        Package("luci-app-wireguard", { virtual = true })
+end
 
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream
 -- did not take in mind provides, so users could get cryptic message

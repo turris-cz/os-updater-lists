@@ -6,8 +6,8 @@ Install("turris-motd", { priority = 40 })
 
 -- Core shell and utils
 Install("bash", "terminfo", "vim-full", { priority = 40 })
-Install("coreutils", "diffutils", { priority = 40 })
-Install("openssl-util", { priority = 40 })
+forInstall(coreutils,date,dd,df,du,sleep,sort,truncate,uniq)
+Install("diffutils", "findutils-find", "openssl-util", { priority = 40 })
 
 -- Process monitoring
 Install("htop", "psmisc", "procps-ng-top", "procps-ng-ps", { priority = 40 })

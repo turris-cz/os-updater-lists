@@ -1,6 +1,7 @@
 PKGLISTS += \
 	3g \
 	5g-kit \
+	adguardhome \
 	atlas \
 	datacollect \
 	drivers \

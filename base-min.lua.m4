@@ -15,6 +15,7 @@ if board == "mox" then
 elseif board == "omnia-ng" then
 	forInstallCritical(kmod,file2args(kmod-omnia-ng.list))
 	Install("omnia-ng-support", { critical = true })
+	Install("omnia-ng-minirainbow", { priority = 40 })
 	Install("peacockr", { priority = 40 })
 	Install("turris-omnia-ng-wifi-firmware", { critical = true })
 elseif board == "omnia" then

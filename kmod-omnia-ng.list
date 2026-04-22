@@ -1,5 +1,10 @@
 # Turris Omnia NG specific drivers
 qca-nss-drv-lite
+qca-nss-ecm-standard
+qca-nss-netfn-tcpst
+qca-nss-netfn-sk-offload
+qca-nss-flowmgr
+qca-nss-crypto
 input-gpio-keys
 input-evdev
 qca8084

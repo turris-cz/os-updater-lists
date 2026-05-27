@@ -305,6 +305,11 @@ if os_release.VERSION and version_match(os_release.VERSION, "<9.0.1") then
         Package("luci-app-wireguard", { virtual = true })
 end
 
+-- Migrate Omnia NG LED behavior to new minirainbow
+if board == "omnia-ng" and os_release.VERSION and version_match(os_release.VERSION, "<9.1") then
+        Install("fix-migrate-minirainbow")
+end
+
 -- Some packages were renamed in OpenWrt 21.02 release, but upstream
 -- did not take in mind provides, so users could get cryptic message
 -- that some packages are not available

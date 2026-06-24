@@ -18,6 +18,7 @@ PKGLISTS += \
 	firmware_update \
 	openvpn \
 	syncthing \
+	tailscale \
 	tor
 
 

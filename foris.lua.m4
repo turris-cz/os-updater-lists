@@ -9,6 +9,7 @@ local reforis_optional_plugins = {
 	["netboot"] = "turris-netboot-tools",
 	["librespeed"] = "librespeed-cli",
 	["openvpn"] = "openvpn",
+	["tailscale"] = "tailscale",
 	["snapshots"] = "schnapps",
 	["nextcloud"] = "nextcloud",
 }

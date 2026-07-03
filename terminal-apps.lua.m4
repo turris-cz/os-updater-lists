@@ -5,7 +5,7 @@ _FEATURE_GUARD_
 Install("turris-motd", { priority = 40 })
 
 -- Core shell and utils
-Install("bash", "terminfo", "vim-full", { priority = 40 })
+Install("bash", "terminfo", "vim", { priority = 40 })
 forInstall(coreutils,date,dd,df,du,sleep,sort,truncate,uniq)
 Install("diffutils", "findutils-find", "openssl-util", { priority = 40 })
 

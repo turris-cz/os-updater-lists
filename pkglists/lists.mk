@@ -19,6 +19,7 @@ PKGLISTS += \
 	openvpn \
 	syncthing \
 	tailscale \
+	vim-full \
 	tor
 
 

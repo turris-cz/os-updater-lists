@@ -135,6 +135,18 @@ local db = {
 		packages = {"kmod-usb-net-cdc-ether", "usb-modeswitch"},
 		class = {"gsm"}
 	},
+	{ -- Huawei Technologies Co., Ltd. E353/E3131 [emulating drivers CD-ROM]
+		vendor = 0x12d1,
+		product = 0x1f01,
+		packages = {"kmod-usb-net-cdc-ether", "usb-modeswitch"},
+		class = {"gsm"}
+	},
+	{ -- Huawei Technologies Co., Ltd. E353/E3131 [after mode switch]
+		vendor = 0x12d1,
+		product = 0x14db,
+		packages = {"kmod-usb-net-cdc-ether", "usb-modeswitch"},
+		class = {"gsm"}
+	},
 	{ -- SIMCOM SDXNIGHTJAR-MTP
 		vendor = 0x1e0e,
 		product = 0x9001,

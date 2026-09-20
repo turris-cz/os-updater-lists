@@ -184,6 +184,18 @@ local db = {
 		packages = {"kmod-mt76x02-usb", "kmod-usb-roles", "usb-modeswitch", "kmod-scsi-cdrom"},
 		class = {"wifi"}
 	},
+	{ -- TP-Link Archer T2U v3 [RTL8811AU]
+		vendor = 0x2357,
+		product = 0x011f,
+		packages = {"kmod-rtw88-8821au"},
+		class = {"wifi"}
+	},
+	{ -- TP-Link Archer T4U v3 [RTL8812BU]
+		vendor = 0x2357,
+		product = 0x0115,
+		packages = {"kmod-rtw88-8822bu"},
+		class = {"wifi"}
+	},
 	-- Z-Wave --------------------------------------------------------------------
 	{ -- Sigma Designs, Inc. Aeotec Z-Stick Gen5 (ZW090) - UZB
 		vendor = 0x0658,

@@ -7,6 +7,7 @@ PKGLISTS += \
 	drivers \
 	dvb \
 	hardening \
+	infodump \
 	kresd6 \
 	luci_controls \
 	lxc \

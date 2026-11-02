@@ -117,6 +117,13 @@ for _, ssl in pairs({"openssl", "mbedtls"}) do
 	end
 end
 
+-- OpenWrt replaced atlas-sw-probe and atlas-probe with ripe-atlas-probe and
+-- ripe-atlas-common. Install them for requests of the old names.
+Package("atlas-sw-probe", { virtual = true, deps = "ripe-atlas-probe" })
+Package("atlas-probe", { virtual = true, deps = "ripe-atlas-common" })
+-- Its rpcd plugin calls /etc/init.d/atlas, which is gone.
+Package("atlas-sw-probe-rpc", { virtual = true })
+
 -- With Turris OS 5.2.0 we removed long time obsolete package cznic-cacert-bundle.
 -- This package was storing its certificates to backup storage. We have to remove
 -- them from there.

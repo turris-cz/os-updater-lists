@@ -68,8 +68,6 @@ if options and options.encrypt then
 
         if board == "mox" then
                 Install("kmod-crypto-hw-safexcel", { priority = 40 })
-        elseif board == "turris1x" then
-                Install("kmod-crypto-hw-talitos", { priority = 40 })
         end
 
 end

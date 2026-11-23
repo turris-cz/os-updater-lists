@@ -217,6 +217,12 @@ local db = {
 		packages = {"kmod-bluetooth"},
 		class = {"bluetooth"}
 	},
+	{ -- Barrot Technology UGREEN BT6.0 Adapter
+		vendor = 0x33fa,
+		product = 0x0012,
+		packages = {"kmod-bluetooth"},
+		class = {"bluetooth"}
+	},
 	-- Ethernet adapters ---------------------------------------------------------
 	{ -- D-Link, DUB-1312 Gigabit Ethernet Adapter
 		vendor = 0x2001,
